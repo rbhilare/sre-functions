@@ -84,7 +84,7 @@ Next update in 30 min.
 | Handoff note is non-negotiable | No verbal-only handoffs — it must be written in the thread |
 | Outgoing team stays available 1 hr | For follow-up questions after handoff |
 | Severity reassessment at each handoff | Incoming team re-evaluates severity with fresh eyes |
-| Escalations carry forward | Red Hat cases, management notifications — include in handoff |
+| Escalations carry forward | Cases, management notifications — include in handoff |
 
 ---
 
@@ -95,7 +95,7 @@ Next update in 30 min.
 | Sev-1 during handoff | Both teams stay until mitigated — handoff only after stabilization |
 | Sev-1 overnight (no active team available) | Page the on-call engineer in the nearest active region |
 | Need SME from another region | @mention in the thread — they respond when their shift starts |
-| Red Hat case needs follow-up | Include case number, last update, and expected response time in handoff |
+| Case needs follow-up | Include case number, last update, and expected response time in handoff |
 
 ---
 
