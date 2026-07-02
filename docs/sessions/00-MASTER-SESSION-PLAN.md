@@ -1,0 +1,1 @@
+/home/rbhilare/workspaces/github.com/rbhilare/sre-functions/sessions/00-MASTER-SESSION-PLAN.md
