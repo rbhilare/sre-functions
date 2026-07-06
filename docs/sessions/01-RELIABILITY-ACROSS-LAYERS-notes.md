@@ -1,1 +1,0 @@
-/home/rbhilare/workspaces/github.com/rbhilare/sre-functions/sessions/01-RELIABILITY-ACROSS-LAYERS-notes.md

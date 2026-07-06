@@ -1,1 +1,1 @@
-/home/rbhilare/workspaces/github.com/rbhilare/sre-functions/sessions/02-FOLLOW-THE-SUN-MODEL.md
+../../sessions/02-FOLLOW-THE-SUN-MODEL.md
