@@ -9,17 +9,7 @@
 
 ---
 
-### 1: Title
-
-# Reliability Across Layers
-
-**Code, Config and Platform**
-
-Rohit Bhilare — Principal Site Reliability Engineer, Hybrid Platforms — ROSA, Red Hat
-
----
-
-### 2: Agenda
+## Agenda
 
 - What is Reliability? (Definitions & Frameworks)
 - Code Layer — Writing Reliable Code
@@ -32,7 +22,7 @@ Rohit Bhilare — Principal Site Reliability Engineer, Hybrid Platforms — ROSA
 
 ---
 
-### 3: What is Reliability?
+## What is Reliability?
 
 **Industry Standard:** The probability that a system will function as expected over a given time period.
 
@@ -53,9 +43,7 @@ Rohit Bhilare — Principal Site Reliability Engineer, Hybrid Platforms — ROSA
 | 99.99% (four nines) | 52 minutes |
 | 99.999% (five nines) | 5.2 minutes |
 
----
-
-### 4: SLI, SLO, SLA Framework
+### SLI, SLO, SLA Framework
 
 **Trinity of reliability engineering:**
 
@@ -65,9 +53,7 @@ Rohit Bhilare — Principal Site Reliability Engineer, Hybrid Platforms — ROSA
 | **SLO** (Service Level Objective) | Internal target we aim for | 99.9% of requests meet SLI |
 | **SLI** (Service Level Indicator) | Actual measurement | Request latency < 100ms, Error rate < 0.1% |
 
----
-
-### 5: Error Budget & MTTR/MTTF
+### Error Budget & MTTR/MTTF
 
 **Key Metrics:**
 
@@ -85,7 +71,9 @@ Rohit Bhilare — Principal Site Reliability Engineer, Hybrid Platforms — ROSA
 
 ---
 
-### 6: Code Layer — Defensive Programming
+## Code Layer — Reliability Patterns
+
+### Defensive Programming
 
 ```python
 # BAD - Crashes on invalid input
@@ -101,9 +89,7 @@ def calculate_percentage(value, total):
     return (value / total) * 100
 ```
 
----
-
-### 7: Code Layer — Circuit Breaker Pattern
+### Circuit Breaker Pattern
 
 ```python
 from pybreaker import CircuitBreaker
@@ -119,9 +105,7 @@ def call_external_api():
     return requests.get("https://api.example.com")
 ```
 
----
-
-### 8: Code Layer — Retry with Exponential Backoff
+### Retry with Exponential Backoff
 
 ```python
 import tenacity
@@ -135,24 +119,18 @@ def fetch_data():
     return requests.get("https://api.example.com")
 ```
 
----
-
-### 9: Code Layer — Graceful Degradation
+### Graceful Degradation
 
 ```python
 def get_user_recommendations():
     try:
-        # Attempt to get ML recommendations
         return get_ml_recommendations()
     except Exception as e:
         logger.error(f"ML service failed: {e}")
-        # Fall back to simpler logic
         return get_simple_recommendations()
 ```
 
----
-
-### 10: Code Layer — Timeouts
+### Timeouts
 
 ```python
 try:
@@ -166,7 +144,9 @@ except requests.Timeout:
 
 ---
 
-### 11: Config Layer — Infrastructure as Code (IaC)
+## Config Layer — Reliability
+
+### Infrastructure as Code (IaC)
 
 ```hcl
 resource "aws_autoscaling_group" "api_servers" {
@@ -179,9 +159,7 @@ resource "aws_autoscaling_group" "api_servers" {
 
 **Environment Parity:** Development = Staging = Production (same configs, versions, resources)
 
----
-
-### 12: Config Layer — Deployment Strategies & Feature Flags
+### Deployment Strategies & Feature Flags
 
 **Blue-Green Deployment:** Old (Blue) → New (Green) → Traffic Switch (Instant rollback)
 
@@ -196,7 +174,9 @@ else:
 
 ---
 
-### 13: Platform Layer — Redundancy & High Availability
+## Platform Layer — Reliability
+
+### Redundancy & High Availability
 
 Load balancer distributing traffic across multiple **Regions** and **Availability Zones (AZs)**.
 
@@ -207,9 +187,7 @@ Load balancer distributing traffic across multiple **Regions** and **Availabilit
 | Network | Redundant load balancers |
 | DNS | Health-checked failover routing |
 
----
-
-### 14: Platform Layer — Self-Healing & Resource Quotas
+### Self-Healing & Resource Quotas
 
 **Self-Healing with Liveness Probes:**
 
@@ -237,9 +215,7 @@ spec:
     pods: "100"
 ```
 
----
-
-### 15: Platform Layer — Pod Disruption Budgets
+### Pod Disruption Budgets
 
 ```yaml
 apiVersion: policy/v1
@@ -253,9 +229,7 @@ spec:
       app: api
 ```
 
----
-
-### 16: Platform Layer — Service Mesh & Database Reliability
+### Service Mesh & Database Reliability
 
 **Service Mesh (Traffic Management):**
 
@@ -277,7 +251,9 @@ Automated failover in < 30 seconds.
 
 ---
 
-### 17: Observability — The Three Pillars
+## Observability
+
+### The Three Pillars
 
 | Pillar | Type | What It Captures |
 |--------|------|-----------------|
@@ -285,9 +261,7 @@ Automated failover in < 30 seconds.
 | **Logs** | Context | INFO, WARN, ERROR logs with timestamps |
 | **Traces** | Flow | Request path through services and database queries |
 
----
-
-### 18: Monitoring & Alerting
+### Monitoring & Alerting
 
 **Alert Strategies:**
 
@@ -301,7 +275,9 @@ Automated failover in < 30 seconds.
 
 ---
 
-### 19: Tools & Technologies — Observability Stack
+## Tools & Technologies
+
+### Observability Stack
 
 | Category | Tools |
 |----------|-------|
@@ -311,9 +287,7 @@ Automated failover in < 30 seconds.
 | Dashboards | Grafana, Kibana |
 | Alerting | AlertManager, PagerDuty |
 
----
-
-### 20: Tools & Technologies — Testing, Quality & Infra
+### Testing, Quality & Infrastructure
 
 | Category | Tools |
 |----------|-------|
@@ -325,7 +299,7 @@ Automated failover in < 30 seconds.
 
 ---
 
-### 21: Real-World Example — E-Commerce System Reliability
+## Real-World Example — E-Commerce System
 
 **Result: 99.99% availability maintained**
 
@@ -337,7 +311,7 @@ Automated failover in < 30 seconds.
 
 ---
 
-### 22: Best Practices Summary
+## Best Practices Summary
 
 **DO:**
 
@@ -363,17 +337,17 @@ Automated failover in < 30 seconds.
 
 ---
 
-### 23: Contact & Resources
+## Contact & Resources
 
 **Questions?**
 
 | | |
 |---|---|
 | **Email** | rbhilare@redhat.com |
+| **Slack** | [@Rohit Bhilare](https://redhat.enterprise.slack.com/team/U0875U18FUH) |
+| **Slides** | Reliability Across Layers — Code, Config, Platform |
 | **GitHub** | [SRE Product Support Workflow](https://github.com/rbhilare/sre-functions/blob/main/ideal-sre-workflow/SRE-PRODUCT-SUPPORT-WORKFLOW.md) |
 
 ---
-
-### 24: Thank You
 
 > Red Hat is the world's leading provider of enterprise open source software solutions. Award-winning support, training, and consulting services make Red Hat a trusted adviser to the Fortune 500.
