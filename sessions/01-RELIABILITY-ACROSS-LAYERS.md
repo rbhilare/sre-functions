@@ -3,13 +3,13 @@
 **Code, Config and Platform**
 
 **Presenter:** Rohit Bhilare — Principal Site Reliability Engineer, Hybrid Platforms — ROSA, Red Hat
-**Duration:** 30 minutes | **Slides:** 24
+**Duration:** 30 minutes
 **Series:** SRE Best Practices — How We Do Things (Session 1 of 14)
 **Focus:** Building resilient systems
 
 ---
 
-### Slide 1: Title
+### 1: Title
 
 # Reliability Across Layers
 
@@ -19,7 +19,7 @@ Rohit Bhilare — Principal Site Reliability Engineer, Hybrid Platforms — ROSA
 
 ---
 
-### Slide 2: Agenda
+### 2: Agenda
 
 - What is Reliability? (Definitions & Frameworks)
 - Code Layer — Writing Reliable Code
@@ -32,7 +32,7 @@ Rohit Bhilare — Principal Site Reliability Engineer, Hybrid Platforms — ROSA
 
 ---
 
-### Slide 3: What is Reliability?
+### 3: What is Reliability?
 
 **Industry Standard:** The probability that a system will function as expected over a given time period.
 
@@ -55,7 +55,7 @@ Rohit Bhilare — Principal Site Reliability Engineer, Hybrid Platforms — ROSA
 
 ---
 
-### Slide 4: SLI, SLO, SLA Framework
+### 4: SLI, SLO, SLA Framework
 
 **Trinity of reliability engineering:**
 
@@ -67,7 +67,7 @@ Rohit Bhilare — Principal Site Reliability Engineer, Hybrid Platforms — ROSA
 
 ---
 
-### Slide 5: Error Budget & MTTR/MTTF
+### 5: Error Budget & MTTR/MTTF
 
 **Key Metrics:**
 
@@ -85,7 +85,7 @@ Rohit Bhilare — Principal Site Reliability Engineer, Hybrid Platforms — ROSA
 
 ---
 
-### Slide 6: Code Layer — Defensive Programming
+### 6: Code Layer — Defensive Programming
 
 ```python
 # BAD - Crashes on invalid input
@@ -103,7 +103,7 @@ def calculate_percentage(value, total):
 
 ---
 
-### Slide 7: Code Layer — Circuit Breaker Pattern
+### 7: Code Layer — Circuit Breaker Pattern
 
 ```python
 from pybreaker import CircuitBreaker
@@ -121,7 +121,7 @@ def call_external_api():
 
 ---
 
-### Slide 8: Code Layer — Retry with Exponential Backoff
+### 8: Code Layer — Retry with Exponential Backoff
 
 ```python
 import tenacity
@@ -137,7 +137,7 @@ def fetch_data():
 
 ---
 
-### Slide 9: Code Layer — Graceful Degradation
+### 9: Code Layer — Graceful Degradation
 
 ```python
 def get_user_recommendations():
@@ -152,7 +152,7 @@ def get_user_recommendations():
 
 ---
 
-### Slide 10: Code Layer — Timeouts
+### 10: Code Layer — Timeouts
 
 ```python
 try:
@@ -166,7 +166,7 @@ except requests.Timeout:
 
 ---
 
-### Slide 11: Config Layer — Infrastructure as Code (IaC)
+### 11: Config Layer — Infrastructure as Code (IaC)
 
 ```hcl
 resource "aws_autoscaling_group" "api_servers" {
@@ -181,7 +181,7 @@ resource "aws_autoscaling_group" "api_servers" {
 
 ---
 
-### Slide 12: Config Layer — Deployment Strategies & Feature Flags
+### 12: Config Layer — Deployment Strategies & Feature Flags
 
 **Blue-Green Deployment:** Old (Blue) → New (Green) → Traffic Switch (Instant rollback)
 
@@ -196,7 +196,7 @@ else:
 
 ---
 
-### Slide 13: Platform Layer — Redundancy & High Availability
+### 13: Platform Layer — Redundancy & High Availability
 
 Load balancer distributing traffic across multiple **Regions** and **Availability Zones (AZs)**.
 
@@ -209,7 +209,7 @@ Load balancer distributing traffic across multiple **Regions** and **Availabilit
 
 ---
 
-### Slide 14: Platform Layer — Self-Healing & Resource Quotas
+### 14: Platform Layer — Self-Healing & Resource Quotas
 
 **Self-Healing with Liveness Probes:**
 
@@ -239,7 +239,7 @@ spec:
 
 ---
 
-### Slide 15: Platform Layer — Pod Disruption Budgets
+### 15: Platform Layer — Pod Disruption Budgets
 
 ```yaml
 apiVersion: policy/v1
@@ -255,7 +255,7 @@ spec:
 
 ---
 
-### Slide 16: Platform Layer — Service Mesh & Database Reliability
+### 16: Platform Layer — Service Mesh & Database Reliability
 
 **Service Mesh (Traffic Management):**
 
@@ -277,7 +277,7 @@ Automated failover in < 30 seconds.
 
 ---
 
-### Slide 17: Observability — The Three Pillars
+### 17: Observability — The Three Pillars
 
 | Pillar | Type | What It Captures |
 |--------|------|-----------------|
@@ -287,7 +287,7 @@ Automated failover in < 30 seconds.
 
 ---
 
-### Slide 18: Monitoring & Alerting
+### 18: Monitoring & Alerting
 
 **Alert Strategies:**
 
@@ -301,7 +301,7 @@ Automated failover in < 30 seconds.
 
 ---
 
-### Slide 19: Tools & Technologies — Observability Stack
+### 19: Tools & Technologies — Observability Stack
 
 | Category | Tools |
 |----------|-------|
@@ -313,7 +313,7 @@ Automated failover in < 30 seconds.
 
 ---
 
-### Slide 20: Tools & Technologies — Testing, Quality & Infra
+### 20: Tools & Technologies — Testing, Quality & Infra
 
 | Category | Tools |
 |----------|-------|
@@ -325,7 +325,7 @@ Automated failover in < 30 seconds.
 
 ---
 
-### Slide 21: Real-World Example — E-Commerce System Reliability
+### 21: Real-World Example — E-Commerce System Reliability
 
 **Result: 99.99% availability maintained**
 
@@ -337,7 +337,7 @@ Automated failover in < 30 seconds.
 
 ---
 
-### Slide 22: Best Practices Summary
+### 22: Best Practices Summary
 
 **DO:**
 
@@ -363,19 +363,17 @@ Automated failover in < 30 seconds.
 
 ---
 
-### Slide 23: Contact & Resources
+### 23: Contact & Resources
 
 **Questions?**
 
 | | |
 |---|---|
 | **Email** | rbhilare@redhat.com |
-| **Slack** | [@Rohit Bhilare](https://redhat.enterprise.slack.com/team/U0875U18FUH) |
-| **Slides** | Reliability Across Layers — Code, Config, Platform |
 | **GitHub** | [SRE Product Support Workflow](https://github.com/rbhilare/sre-functions/blob/main/ideal-sre-workflow/SRE-PRODUCT-SUPPORT-WORKFLOW.md) |
 
 ---
 
-### Slide 24: Thank You
+### 24: Thank You
 
 > Red Hat is the world's leading provider of enterprise open source software solutions. Award-winning support, training, and consulting services make Red Hat a trusted adviser to the Fortune 500.
