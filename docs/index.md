@@ -1,10 +1,10 @@
 <div class="hero" markdown>
-<div class="hero-badge">Red Hat SRE &bull; Hybrid Platforms</div>
+<div class="hero-badge">Hybrid Platforms — ROSA, Red Hat</div>
 
 # SRE Best Practices — How We Do Things
 
-Sharing real-world Site Reliability Engineering practices from running
-OpenShift Container Platform at scale
+Sharing Site Reliability Engineering practices from running
+OpenShift Container Platform
 
 </div>
 
@@ -152,23 +152,8 @@ Backup strategy, DR testing, capacity planning, and the SRE flywheel for continu
 
 ---
 
-## Delivery Approach
-
-!!! tip "How we deliver these sessions"
-
-    - **Tone:** First-person experience sharing — "here's what we do," not "here's what you should do"
-    - **Pace:** One to two sessions per week for absorption and practice
-    - **Q&A sessions:** Partner team leads — facilitator listens more than talks
-    - **Adaptation:** Q&A feedback shapes the depth of upcoming content sessions
-
-    ```
-    [Content] → [Content] → [Q&A] → [Content] → [Content] → [Q&A] → ...
-    ```
-
----
-
 ## Presenter
 
 :material-account-circle:{ .lg } **Rohit Bhilare** — Principal Site Reliability Engineer, Hybrid Platforms — ROSA, Red Hat
 
-[:material-email: rbhilare@redhat.com](mailto:rbhilare@redhat.com) &nbsp;&nbsp; [:material-slack: @Rohit Bhilare](https://redhat.enterprise.slack.com/team/U0875U18FUH) &nbsp;&nbsp; [:material-github: GitHub](https://github.com/rbhilare/sre-functions)
+[:material-email: rbhilare@redhat.com](mailto:rbhilare@redhat.com) &nbsp;&nbsp; [:material-github: GitHub](https://github.com/rbhilare/sre-functions)
