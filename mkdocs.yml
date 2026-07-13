@@ -105,6 +105,7 @@ nav:
   - Content Sessions:
       - "Session 1: Reliability Across Layers": sessions/01-RELIABILITY-ACROSS-LAYERS.md
       - "Session 2: Follow-the-Sun Model": sessions/02-FOLLOW-THE-SUN-MODEL.md
-      # Sessions 4-14 will be added progressively
+      - "Session 4: How We Run SRE": sessions/04-HOW-WE-RUN-SRE.md
+      # Sessions 5-14 will be added progressively
   - "Q&A Sessions":
       - "Session 3: Ask & Discuss (Sessions 1\u20132)": sessions/03-INSIDE-SRE-ASK-AND-DISCUSS.md
