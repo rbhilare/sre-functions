@@ -28,16 +28,16 @@
 | 2 | [Follow-the-Sun (FTS) Model for SRE Environment](02-FOLLOW-THE-SUN-MODEL.md) | 30 min | Content |
 | 3 | [Inside SRE: Ask & Discuss Anything](03-INSIDE-SRE-ASK-AND-DISCUSS.md) | 30 min | Q&A |
 | 4 | [How We Run SRE](04-HOW-WE-RUN-SRE.md) | 40 min | Content |
-| 5 | [How We Operate OCP Clusters](05-HOW-WE-OPERATE-OCP-CLUSTERS.md) | 40 min | Content |
-| 6 | [Inside SRE: Ask & Discuss Anything](06-INSIDE-SRE-ASK-AND-DISCUSS.md) | 30 min | Q&A |
-| 7 | [How We Monitor and Alert](07-HOW-WE-MONITOR-AND-ALERT.md) | 30 min | Content |
-| 8 | [How We Handle Incidents](08-HOW-WE-HANDLE-INCIDENTS.md) | 30 min | Content |
-| 9 | [Inside SRE: Ask & Discuss Anything](09-INSIDE-SRE-ASK-AND-DISCUSS.md) | 30 min | Q&A |
-| 10 | [How We Measure Reliability](10-HOW-WE-MEASURE-RELIABILITY.md) | 30 min | Content |
-| 11 | [How We Manage Changes and Upgrades](11-HOW-WE-MANAGE-CHANGES-AND-UPGRADES.md) | 30 min | Content |
-| 12 | [Inside SRE: Ask & Discuss Anything](12-INSIDE-SRE-ASK-AND-DISCUSS.md) | 30 min | Q&A |
-| 13 | [How We Automate and Reduce Toil](13-HOW-WE-AUTOMATE-AND-REDUCE-TOIL.md) | 30 min | Content |
-| 14 | [How We Plan for Capacity and DR](14-HOW-WE-PLAN-FOR-CAPACITY-AND-DR.md) | 30 min | Content |
+| 5 | How We Operate OCP Clusters | 40 min | Content |
+| 6 | Inside SRE: Ask & Discuss Anything | 30 min | Q&A |
+| 7 | How We Monitor and Alert | 30 min | Content |
+| 8 | How We Handle Incidents | 30 min | Content |
+| 9 | Inside SRE: Ask & Discuss Anything | 30 min | Q&A |
+| 10 | How We Measure Reliability | 30 min | Content |
+| 11 | How We Manage Changes and Upgrades | 30 min | Content |
+| 12 | Inside SRE: Ask & Discuss Anything | 30 min | Q&A |
+| 13 | How We Automate and Reduce Toil | 30 min | Content |
+| 14 | How We Plan for Capacity and DR | 30 min | Content |
 
 ---
 
@@ -81,61 +81,61 @@ Team structure, RACI, on-call rotations, blameless culture, working principles (
 
 ---
 
-### Session 5: [How We Operate OCP Clusters](05-HOW-WE-OPERATE-OCP-CLUSTERS.md) (40 min)
+### Session 5: How We Operate OCP Clusters (40 min)
 
 Daily/weekly/monthly operational routines, node and MachineConfigPool management, CNV operations, certificate lifecycle, and mirror registry management in disconnected environments.
 
 ---
 
-### Session 6: [Inside SRE — Ask & Discuss Anything](06-INSIDE-SRE-ASK-AND-DISCUSS.md) (30 min)
+### Session 6: Inside SRE — Ask & Discuss Anything (30 min)
 
 Open Q&A covering Sessions 4–5. Discussion prompts around SRE team structure and OCP operations.
 
 ---
 
-### Session 7: [How We Monitor and Alert](07-HOW-WE-MONITOR-AND-ALERT.md) (30 min)
+### Session 7: How We Monitor and Alert (30 min)
 
 Monitoring stack (Prometheus, Alertmanager, Loki), alert philosophy ("alert on actionables"), routing by severity, dashboards, alert fatigue elimination (how we went from 500 to 80 alerts), and our top 10 alert rules.
 
 ---
 
-### Session 8: [How We Handle Incidents](08-HOW-WE-HANDLE-INCIDENTS.md) (30 min)
+### Session 8: How We Handle Incidents (30 min)
 
 Severity classification, 6-phase incident workflow, ServiceNow and Teams integration, status board, escalation paths, and post-incident reviews (PIRs).
 
 ---
 
-### Session 9: [Inside SRE — Ask & Discuss Anything](09-INSIDE-SRE-ASK-AND-DISCUSS.md) (30 min)
+### Session 9: Inside SRE — Ask & Discuss Anything (30 min)
 
 Open Q&A covering Sessions 7–8. Discussion prompts around monitoring, alert fatigue, and incident management.
 
 ---
 
-### Session 10: [How We Measure Reliability](10-HOW-WE-MEASURE-RELIABILITY.md) (30 min)
+### Session 10: How We Measure Reliability (30 min)
 
 Our 5 actual SLIs (with PromQL), SLO targets and burn rates, error budget policy, decision-making with SLOs, and mistakes we've made.
 
 ---
 
-### Session 11: [How We Manage Changes and Upgrades](11-HOW-WE-MANAGE-CHANGES-AND-UPGRADES.md) (30 min)
+### Session 11: How We Manage Changes and Upgrades (30 min)
 
 Change categorization, OCP upgrade process, pre/post-upgrade checklists, operator upgrades, rollback and recovery, and disconnected environment considerations.
 
 ---
 
-### Session 12: [Inside SRE — Ask & Discuss Anything](12-INSIDE-SRE-ASK-AND-DISCUSS.md) (30 min)
+### Session 12: Inside SRE — Ask & Discuss Anything (30 min)
 
 Open Q&A covering Sessions 10–11. Discussion prompts around SLOs, error budgets, and change management.
 
 ---
 
-### Session 13: [How We Automate and Reduce Toil](13-HOW-WE-AUTOMATE-AND-REDUCE-TOIL.md) (30 min)
+### Session 13: How We Automate and Reduce Toil (30 min)
 
 Toil identification and measurement, automation ROI framework, GitOps (ArgoCD) repo structure, self-healing patterns, and what we've learned not to automate.
 
 ---
 
-### Session 14: [How We Plan for Capacity and DR](14-HOW-WE-PLAN-FOR-CAPACITY-AND-DR.md) (30 min)
+### Session 14: How We Plan for Capacity and DR (30 min)
 
 Backup strategy, DR runbooks and testing, capacity planning, monthly metrics review, SRE flywheel for continuous improvement, and series wrap-up with key takeaways.
 
