@@ -68,7 +68,7 @@ Code, Config, and Platform — how reliability is a shared responsibility across
 
 ### How We Run SRE
 
-Team structure, RACI, on-call, blameless culture, and the principles that keep us effective.
+Team structure, culture principles, dual operating model, on-call with automation, and blameless culture.
 </div>
 
 <div class="card" markdown>
@@ -76,7 +76,7 @@ Team structure, RACI, on-call, blameless culture, and the principles that keep u
 
 ### How We Operate OCP
 
-Daily routines, node management, CNV operations, certificates, and disconnected environment specifics.
+Cluster access, lifecycle operations, node maintenance workflow, upgrade monitoring, and diagnostics.
 </div>
 
 <div class="card" markdown>
@@ -141,14 +141,14 @@ Backup strategy, DR testing, capacity planning, and the SRE flywheel for continu
 | **4** | [How We Run SRE](sessions/04-HOW-WE-RUN-SRE.md) | 40 min | :material-presentation: Content |
 | **5** | [How We Operate OCP Clusters](sessions/05-HOW-WE-OPERATE-OCP-CLUSTERS.md) | 40 min | :material-presentation: Content |
 | **6** | [Inside SRE: Ask & Discuss Anything](sessions/06-INSIDE-SRE-ASK-AND-DISCUSS.md) | 30 min | :material-forum: Q&A |
-| **7** | [How We Monitor and Alert](sessions/07-HOW-WE-MONITOR-AND-ALERT.md) | 30 min | :material-presentation: Content |
-| **8** | [How We Handle Incidents](sessions/08-HOW-WE-HANDLE-INCIDENTS.md) | 30 min | :material-presentation: Content |
-| **9** | [Inside SRE: Ask & Discuss Anything](sessions/09-INSIDE-SRE-ASK-AND-DISCUSS.md) | 30 min | :material-forum: Q&A |
-| **10** | [How We Measure Reliability](sessions/10-HOW-WE-MEASURE-RELIABILITY.md) | 30 min | :material-presentation: Content |
-| **11** | [How We Manage Changes and Upgrades](sessions/11-HOW-WE-MANAGE-CHANGES-AND-UPGRADES.md) | 30 min | :material-presentation: Content |
-| **12** | [Inside SRE: Ask & Discuss Anything](sessions/12-INSIDE-SRE-ASK-AND-DISCUSS.md) | 30 min | :material-forum: Q&A |
-| **13** | [How We Automate and Reduce Toil](sessions/13-HOW-WE-AUTOMATE-AND-REDUCE-TOIL.md) | 30 min | :material-presentation: Content |
-| **14** | [How We Plan for Capacity and DR](sessions/14-HOW-WE-PLAN-FOR-CAPACITY-AND-DR.md) | 30 min | :material-presentation: Content |
+| **7** | How We Monitor and Alert | 30 min | :material-presentation: Content |
+| **8** | How We Handle Incidents | 30 min | :material-presentation: Content |
+| **9** | Inside SRE: Ask & Discuss Anything | 30 min | :material-forum: Q&A |
+| **10** | How We Measure Reliability | 30 min | :material-presentation: Content |
+| **11** | How We Manage Changes and Upgrades | 30 min | :material-presentation: Content |
+| **12** | Inside SRE: Ask & Discuss Anything | 30 min | :material-forum: Q&A |
+| **13** | How We Automate and Reduce Toil | 30 min | :material-presentation: Content |
+| **14** | How We Plan for Capacity and DR | 30 min | :material-presentation: Content |
 
 ---
 
