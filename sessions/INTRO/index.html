@@ -13,10 +13,6 @@
       
       
       
-        <link rel="prev" href="../01-RELIABILITY-ACROSS-LAYERS/">
-      
-      
-        <link rel="next" href="../04-HOW-WE-RUN-SRE/">
       
       
         
@@ -27,7 +23,7 @@
     
     
       
-        <title>Session 2: Follow-the-Sun Model - SRE Best Practices — How We Do Things</title>
+        <title>INTRO - SRE Best Practices — How We Do Things</title>
       
     
     
@@ -79,11 +75,6 @@
     <label class="md-overlay" for="__drawer"></label>
     <div data-md-component="skip">
       
-        
-        <a href="#session-2-follow-the-sun-fts-model-for-sre-environment" class="md-skip">
-          Skip to content
-        </a>
-      
     </div>
     <div data-md-component="announce">
       
@@ -116,7 +107,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Session 2: Follow-the-Sun Model
+              INTRO
             
           </span>
         </div>
@@ -264,12 +255,10 @@
   
   
   
-    
-  
   
     
     
-      <li class="md-tabs__item md-tabs__item--active">
+      <li class="md-tabs__item">
         <a href="../01-RELIABILITY-ACROSS-LAYERS/" class="md-tabs__link">
           
   
@@ -415,10 +404,8 @@
       
   
   
-    
   
   
-  
     
     
       
@@ -434,22 +421,21 @@
     
     
       
-        
-        
-      
       
         
       
     
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--nested">
       
         
-        
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" checked>
         
           
-          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="">
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
             
   
   
@@ -467,7 +453,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="true">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_3">
             <span class="md-nav__icon md-icon"></span>
             
@@ -510,37 +496,10 @@
                 
   
   
-    
   
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-        
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Session 2: Follow-the-Sun Model
-  
-
-    
-  </span>
-  
-  
-
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../02-FOLLOW-THE-SUN-MODEL/" class="md-nav__link">
         
   
   
@@ -556,153 +515,6 @@
   
 
       </a>
-      
-        
-
-<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
-  
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#overview" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Overview
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#quick-steps" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Quick Steps
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Quick Steps">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#1-issue-detected" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        1. Issue Detected
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#2-investigate-and-document" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        2. Investigate and Document
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#3-handoff-preparation-30-min-before-shift-end" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        3. Handoff Preparation (30 min before shift end)
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#4-handoff-meeting-15-min-overlap" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        4. Handoff Meeting (15 min overlap)
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#5-incoming-team-takes-over" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        5. Incoming Team Takes Over
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#6-resolve-or-hand-off-again" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        6. Resolve or Hand Off Again
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#handoff-rules" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Handoff Rules
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#escalation-across-regions" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Escalation Across Regions
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#quick-reference" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Quick Reference
-      
-    </span>
-  </a>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
     </li>
   
 
@@ -911,143 +723,6 @@
   
   
   
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#overview" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Overview
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#quick-steps" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Quick Steps
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Quick Steps">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#1-issue-detected" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        1. Issue Detected
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#2-investigate-and-document" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        2. Investigate and Document
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#3-handoff-preparation-30-min-before-shift-end" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        3. Handoff Preparation (30 min before shift end)
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#4-handoff-meeting-15-min-overlap" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        4. Handoff Meeting (15 min overlap)
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#5-incoming-team-takes-over" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        5. Incoming Team Takes Over
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#6-resolve-or-hand-off-again" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        6. Resolve or Hand Off Again
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#handoff-rules" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Handoff Rules
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#escalation-across-regions" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Escalation Across Regions
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#quick-reference" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Quick Reference
-      
-    </span>
-  </a>
-  
-</li>
-      
-    </ul>
   
 </nav>
                   </div>
@@ -1067,164 +742,95 @@
   
 
 
-<h1 id="session-2-follow-the-sun-fts-model-for-sre-environment">Session 2: Follow-the-Sun (FTS) Model for SRE Environment<a class="headerlink" href="#session-2-follow-the-sun-fts-model-for-sre-environment" title="Permanent link">⛓️</a></h1>
-<p><strong>Duration:</strong> 30 minutes
-<strong>Series:</strong> SRE Best Practices — How We Do Things (Session 2 of 14)</p>
-<hr />
-<h2 id="overview">Overview<a class="headerlink" href="#overview" title="Permanent link">⛓️</a></h2>
-<p>Three regional SRE teams provide 24/7 coverage by handing off active investigations as the sun moves across time zones. No single team works overnight.</p>
-<div class="language-text highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>APAC (UTC+5:30 to +9)      EMEA (UTC+0 to +2)        NASA (UTC-5 to -8)
-</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>06:00–14:00 UTC             14:00–22:00 UTC            22:00–06:00 UTC
-</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-</span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>       │    Handoff 1    │       │    Handoff 2    │       │    Handoff 3
-</span><span id="__span-0-5"><a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>       └────────────────▶│       └────────────────▶│       └────────────▶
-</span></code></pre></div>
-<hr />
-<h2 id="quick-steps">Quick Steps<a class="headerlink" href="#quick-steps" title="Permanent link">⛓️</a></h2>
-<h3 id="1-issue-detected">1. Issue Detected<a class="headerlink" href="#1-issue-detected" title="Permanent link">⛓️</a></h3>
-<ul>
-<li>Alert fires or user reports an issue</li>
-<li>ServiceNow/WebRCA incident created (auto or manual)</li>
-<li>Assigned to the <strong>currently active regional team</strong></li>
-</ul>
-<h3 id="2-investigate-and-document">2. Investigate and Document<a class="headerlink" href="#2-investigate-and-document" title="Permanent link">⛓️</a></h3>
-<ul>
-<li>Active team investigates following standard runbooks</li>
-<li><strong>All findings posted in the shared Teams/Slack investigation thread/channel</strong></li>
-<li>ServiceNow/WebRCA work notes updated every 30 min (Sev-1/2) or 2 hrs (Sev-3/4)</li>
-</ul>
-<h3 id="3-handoff-preparation-30-min-before-shift-end">3. Handoff Preparation (30 min before shift end)<a class="headerlink" href="#3-handoff-preparation-30-min-before-shift-end" title="Permanent link">⛓️</a></h3>
-<p>The outgoing team prepares a structured handoff note in the Teams/Slack thread/channel:</p>
-<div class="language-text highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>--- HANDOFF: [APAC → EMEA] — [Date, Time UTC] ---
-</span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>Incident:      SNOW-INC00412/ITN-2026-000010
-</span><span id="__span-1-3"><a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a>Severity:      Sev-2
-</span><span id="__span-1-4"><a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a>Cluster:       prod-spoke-01
-</span><span id="__span-1-5"><a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a>Status:        Investigating / Mitigated / Blocked
-</span><span id="__span-1-6"><a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a>
-</span><span id="__span-1-7"><a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a>Summary:       etcd leader elections every ~30s, traced to high disk I/O on master-2
-</span><span id="__span-1-8"><a id="__codelineno-1-8" name="__codelineno-1-8" href="#__codelineno-1-8"></a>What we tried: Checked etcd logs, confirmed leader churn, ruled out network
-</span><span id="__span-1-9"><a id="__codelineno-1-9" name="__codelineno-1-9" href="#__codelineno-1-9"></a>Current theory: Failing SSD on master-2
-</span><span id="__span-1-10"><a id="__codelineno-1-10" name="__codelineno-1-10" href="#__codelineno-1-10"></a>Next steps:    Run disk diagnostics, consider draining master-2
-</span><span id="__span-1-11"><a id="__codelineno-1-11" name="__codelineno-1-11" href="#__codelineno-1-11"></a>Blockers:      None / Waiting for [X]
-</span><span id="__span-1-12"><a id="__codelineno-1-12" name="__codelineno-1-12" href="#__codelineno-1-12"></a>Escalations:   Case #12345 open (awaiting response)
-</span><span id="__span-1-13"><a id="__codelineno-1-13" name="__codelineno-1-13" href="#__codelineno-1-13"></a>Contacts:      @JaneDoe available on Teams for 1 hr after handoff if needed
-</span></code></pre></div>
-<h3 id="4-handoff-meeting-15-min-overlap">4. Handoff Meeting (15 min overlap)<a class="headerlink" href="#4-handoff-meeting-15-min-overlap" title="Permanent link">⛓️</a></h3>
-<ul>
-<li><strong>Outgoing team</strong> briefs <strong>incoming team</strong> (live call or recorded async)</li>
-<li>Walk through every open incident using the handoff note</li>
-<li>Incoming team asks clarifying questions</li>
-<li>Incoming team <strong>acknowledges ownership</strong> in the Teams/Slack thread/channel</li>
-</ul>
-<h3 id="5-incoming-team-takes-over">5. Incoming Team Takes Over<a class="headerlink" href="#5-incoming-team-takes-over" title="Permanent link">⛓️</a></h3>
-<ul>
-<li>Update ServiceNow/WebRCA: reassign to incoming team / engineer</li>
-<li>Post acknowledgement in the investigation thread/channel:</li>
-</ul>
-<div class="language-text highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>--- ACKNOWLEDGED: EMEA taking over — [Date, Time UTC] ---
-</span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>Received handoff from APAC. Continuing investigation on INC00412/ITN-2026-000010.
-</span><span id="__span-2-3"><a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a>Next update in 30 min.
-</span></code></pre></div>
-<ul>
-<li>Continue investigation from where outgoing team left off</li>
-</ul>
-<h3 id="6-resolve-or-hand-off-again">6. Resolve or Hand Off Again<a class="headerlink" href="#6-resolve-or-hand-off-again" title="Permanent link">⛓️</a></h3>
-<ul>
-<li>If resolved: update ServiceNow/WebRCA → Resolved, post resolution in thread/channel, notify stakeholders</li>
-<li>If not resolved by shift end: repeat Steps 3–5 to next region</li>
-</ul>
-<hr />
-<h2 id="handoff-rules">Handoff Rules<a class="headerlink" href="#handoff-rules" title="Permanent link">⛓️</a></h2>
-<table>
-<thead>
-<tr>
-<th>Rule</th>
-<th>Detail</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Never drop an incident silently</td>
-<td>Every open incident must be explicitly handed off</td>
-</tr>
-<tr>
-<td>15-min overlap is mandatory</td>
-<td>Outgoing and incoming teams must have a live sync</td>
-</tr>
-<tr>
-<td>Handoff note is non-negotiable</td>
-<td>No verbal-only handoffs — it must be written in the thread/channel</td>
-</tr>
-<tr>
-<td>Outgoing team stays available 1 hr</td>
-<td>For follow-up questions after handoff</td>
-</tr>
-<tr>
-<td>Severity reassessment at each handoff</td>
-<td>Incoming team re-evaluates severity with fresh eyes</td>
-</tr>
-<tr>
-<td>Escalations carry forward</td>
-<td>Cases, management notifications — include in handoff</td>
-</tr>
-</tbody>
-</table>
-<hr />
-<h2 id="escalation-across-regions">Escalation Across Regions<a class="headerlink" href="#escalation-across-regions" title="Permanent link">⛓️</a></h2>
-<table>
-<thead>
-<tr>
-<th>Scenario</th>
-<th>Action</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Sev-1 during handoff</td>
-<td>Both teams stay until mitigated — handoff only after stabilization</td>
-</tr>
-<tr>
-<td>Sev-1 overnight (no active team available)</td>
-<td>Page the on-call engineer in the nearest active region</td>
-</tr>
-<tr>
-<td>Need SME from another region</td>
-<td>@mention in the thread/channel — they respond when their shift starts</td>
-</tr>
-<tr>
-<td>Case needs follow-up</td>
-<td>Include case number, last update, and expected response time in handoff</td>
-</tr>
-</tbody>
-</table>
-<hr />
-<h2 id="quick-reference">Quick Reference<a class="headerlink" href="#quick-reference" title="Permanent link">⛓️</a></h2>
-<div class="language-text highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>ISSUE DETECTED
-</span><span id="__span-3-2"><a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a>     │
-</span><span id="__span-3-3"><a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a>     ▼
-</span><span id="__span-3-4"><a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a>ACTIVE TEAM INVESTIGATES
-</span><span id="__span-3-5"><a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a>(document everything in Teams/Slack thread/channel + ServiceNow/WebRCA)
-</span><span id="__span-3-6"><a id="__codelineno-3-6" name="__codelineno-3-6" href="#__codelineno-3-6"></a>     │
-</span><span id="__span-3-7"><a id="__codelineno-3-7" name="__codelineno-3-7" href="#__codelineno-3-7"></a>     ├── Resolved? ──▶ YES ──▶ Close incident, update thread
-</span><span id="__span-3-8"><a id="__codelineno-3-8" name="__codelineno-3-8" href="#__codelineno-3-8"></a>     │
-</span><span id="__span-3-9"><a id="__codelineno-3-9" name="__codelineno-3-9" href="#__codelineno-3-9"></a>     NO (shift ending)
-</span><span id="__span-3-10"><a id="__codelineno-3-10" name="__codelineno-3-10" href="#__codelineno-3-10"></a>     │
-</span><span id="__span-3-11"><a id="__codelineno-3-11" name="__codelineno-3-11" href="#__codelineno-3-11"></a>     ▼
-</span><span id="__span-3-12"><a id="__codelineno-3-12" name="__codelineno-3-12" href="#__codelineno-3-12"></a>PREPARE HANDOFF NOTE (30 min before shift end)
-</span><span id="__span-3-13"><a id="__codelineno-3-13" name="__codelineno-3-13" href="#__codelineno-3-13"></a>     │
-</span><span id="__span-3-14"><a id="__codelineno-3-14" name="__codelineno-3-14" href="#__codelineno-3-14"></a>     ▼
-</span><span id="__span-3-15"><a id="__codelineno-3-15" name="__codelineno-3-15" href="#__codelineno-3-15"></a>HANDOFF CALL (15 min overlap)
-</span><span id="__span-3-16"><a id="__codelineno-3-16" name="__codelineno-3-16" href="#__codelineno-3-16"></a>     │
-</span><span id="__span-3-17"><a id="__codelineno-3-17" name="__codelineno-3-17" href="#__codelineno-3-17"></a>     ▼
-</span><span id="__span-3-18"><a id="__codelineno-3-18" name="__codelineno-3-18" href="#__codelineno-3-18"></a>INCOMING TEAM ACKNOWLEDGES &amp; CONTINUES
-</span><span id="__span-3-19"><a id="__codelineno-3-19" name="__codelineno-3-19" href="#__codelineno-3-19"></a>     │
-</span><span id="__span-3-20"><a id="__codelineno-3-20" name="__codelineno-3-20" href="#__codelineno-3-20"></a>     ├── Resolved? ──▶ YES ──▶ Close incident, update thread
-</span><span id="__span-3-21"><a id="__codelineno-3-21" name="__codelineno-3-21" href="#__codelineno-3-21"></a>     │
-</span><span id="__span-3-22"><a id="__codelineno-3-22" name="__codelineno-3-22" href="#__codelineno-3-22"></a>     NO (shift ending)
-</span><span id="__span-3-23"><a id="__codelineno-3-23" name="__codelineno-3-23" href="#__codelineno-3-23"></a>     │
-</span><span id="__span-3-24"><a id="__codelineno-3-24" name="__codelineno-3-24" href="#__codelineno-3-24"></a>     ▼
-</span><span id="__span-3-25"><a id="__codelineno-3-25" name="__codelineno-3-25" href="#__codelineno-3-25"></a>REPEAT HANDOFF TO NEXT REGION
-</span></code></pre></div>
+  <h1>INTRO</h1>
+
+<p>SRE Intro &amp; Best Practices</p>
+<p>As a Principal SRE, the expectation is usually not a deep technical workshop in 1 hour, but rather setting direction, establishing credibility, and aligning teams on reliability practices.</p>
+<p>A good structure for a 1-hour “SRE Intro &amp; Best Practices” session could be:</p>
+<p>Suggested Agenda (60 mins)
+1. Introduction &amp; Context (5–10 mins)
+Your role and responsibilities
+Your experience with large-scale systems/migrations
+What SRE means in your organization
+Goals of the engagement</p>
+<p>Example:</p>
+<p>Reliability as a feature
+Scaling safely
+Enabling engineering velocity
+Reducing operational toil
+2. Core SRE Principles (10–15 mins)</p>
+<p>High-level concepts:</p>
+<p>SLI / SLO / SLA
+Error budgets
+Observability first mindset
+Automation over manual operations
+Incident management culture
+Blameless postmortems
+Capacity &amp; scalability planning
+Resilience engineering</p>
+<p>Keep this practical instead of theoretical.</p>
+<ol>
+<li>Best Practices During Migration / Scaling (15–20 mins)</li>
+</ol>
+<p>This is likely the most valuable section for them.</p>
+<p>Topics:</p>
+<p>Production readiness checklist
+Standard monitoring &amp; alerting
+Golden signals (latency, traffic, errors, saturation)
+Runbooks
+Deployment safety
+Canary
+Rollback
+Feature flags
+CI/CD reliability gates
+Dependency management
+DR/backup strategy
+Cost vs reliability tradeoffs</p>
+<p>If migration is their focus, emphasize:</p>
+<p>Safe migration patterns
+Incremental rollout
+Validation strategies
+Operational ownership
+4. Common Failure Patterns (5–10 mins)</p>
+<p>People remember real problems.</p>
+<p>Examples:</p>
+<p>Alert fatigue
+Noisy dashboards
+Lack of ownership
+Manual recovery steps
+Tight coupling
+Missing observability
+Scaling bottlenecks
+“Works in staging” issues
+5. Q&amp;A / Open Discussion (10 mins)</p>
+<p>This usually becomes the most useful part.</p>
+<p>Try to understand:</p>
+<p>Current pain points
+Existing tooling
+Reliability maturity
+Operational gaps
+Team ownership model
+What You Should Prepare
+5–8 concise slides maximum
+One architecture/example diagram if possible
+A few real-world lessons learned
+Clear actionable recommendations
+Tone to Keep</p>
+<p>As a Principal SRE:</p>
+<p>Strategic, not overly tactical
+Opinionated but collaborative
+Focus on systems thinking
+Connect reliability with business impact and engineering velocity</p>
+<p>Avoid turning it into:</p>
+<p>A Kubernetes tutorial
+A monitoring tool demo
+Too much low-level implementation detail</p>
+<p>If you want, I can also help you prepare:</p>
+<p>A slide outline
+Speaker notes
+Sample SRE best practices checklist
+A polished intro script for the session
+Architecture/reliability discussion points for migrations</p>
 
 
 

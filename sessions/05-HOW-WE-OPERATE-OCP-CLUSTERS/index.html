@@ -13,10 +13,10 @@
       
       
       
-        <link rel="prev" href="../02-FOLLOW-THE-SUN-MODEL/">
+        <link rel="prev" href="../04-HOW-WE-RUN-SRE/">
       
       
-        <link rel="next" href="../05-HOW-WE-OPERATE-OCP-CLUSTERS/">
+        <link rel="next" href="../03-INSIDE-SRE-ASK-AND-DISCUSS/">
       
       
         
@@ -27,7 +27,7 @@
     
     
       
-        <title>Session 4: How We Run SRE - SRE Best Practices — How We Do Things</title>
+        <title>Session 5: How We Operate OCP Clusters - SRE Best Practices — How We Do Things</title>
       
     
     
@@ -80,7 +80,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#session-4-how-we-run-sre" class="md-skip">
+        <a href="#session-5-how-we-operate-ocp-clusters" class="md-skip">
           Skip to content
         </a>
       
@@ -116,7 +116,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Session 4: How We Run SRE
+              Session 5: How We Operate OCP Clusters
             
           </span>
         </div>
@@ -538,6 +538,34 @@
                 
   
   
+  
+  
+    <li class="md-nav__item">
+      <a href="../04-HOW-WE-RUN-SRE/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Session 4: How We Run SRE
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
     
   
   
@@ -557,7 +585,7 @@
   <span class="md-ellipsis">
     
   
-    Session 4: How We Run SRE
+    Session 5: How We Operate OCP Clusters
   
 
     
@@ -575,7 +603,7 @@
   <span class="md-ellipsis">
     
   
-    Session 4: How We Run SRE
+    Session 5: How We Operate OCP Clusters
   
 
     
@@ -612,22 +640,33 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#our-sre-organization-structure-and-dual-operating-model" class="md-nav__link">
+  <a href="#cluster-access-how-we-get-in" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Our SRE Organization — Structure and Dual Operating Model
+        Cluster Access — How We Get In
       
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="Our SRE Organization — Structure and Dual Operating Model">
+    <nav class="md-nav" aria-label="Cluster Access — How We Get In">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#sprint-capacity-allocation" class="md-nav__link">
+  <a href="#centralized-access-with-least-privilege" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Sprint Capacity Allocation
+        Centralized Access with Least Privilege
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#how-it-works-in-practice" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        How It Works in Practice
       
     </span>
   </a>
@@ -640,33 +679,22 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#principles-of-our-sre-culture" class="md-nav__link">
+  <a href="#cluster-lifecycle-operations" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Principles of Our SRE Culture
+        Cluster Lifecycle Operations
       
     </span>
   </a>
   
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#domain-based-functional-teams" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Domain-Based Functional Teams
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Domain-Based Functional Teams">
+    <nav class="md-nav" aria-label="Cluster Lifecycle Operations">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#roles-within-team" class="md-nav__link">
+  <a href="#provisioning-failure-triage" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Roles Within Team
+        Provisioning Failure Triage
       
     </span>
   </a>
@@ -674,10 +702,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#why-domain-teams-work" class="md-nav__link">
+  <a href="#deprovisioning-and-orphan-cleanup" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Why Domain Teams Work
+        Deprovisioning and Orphan Cleanup
       
     </span>
   </a>
@@ -690,22 +718,22 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#how-we-run-on-call" class="md-nav__link">
+  <a href="#node-management-and-maintenance" class="md-nav__link">
     <span class="md-ellipsis">
       
-        How We Run On-Call
+        Node Management and Maintenance
       
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="How We Run On-Call">
+    <nav class="md-nav" aria-label="Node Management and Maintenance">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#pagerduty-driven-rotation" class="md-nav__link">
+  <a href="#node-maintenance-process-aligned-with-ocp-docs" class="md-nav__link">
     <span class="md-ellipsis">
       
-        PagerDuty-Driven Rotation
+        Node Maintenance Process (Aligned with OCP Docs)
       
     </span>
   </a>
@@ -713,10 +741,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#shift-handover-process" class="md-nav__link">
+  <a href="#node-replacement-preferred-over-drainreboot" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Shift Handover Process
+        Node Replacement (Preferred Over Drain/Reboot)
       
     </span>
   </a>
@@ -724,21 +752,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#cad-our-automation-layer-between-pagerduty-and-sre" class="md-nav__link">
+  <a href="#infrastructure-node-resizing" class="md-nav__link">
     <span class="md-ellipsis">
       
-        CAD — Our Automation Layer Between PagerDuty and SRE
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#what-on-call-is-and-is-not" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        What On-Call IS and IS NOT
+        Infrastructure Node Resizing
       
     </span>
   </a>
@@ -751,22 +768,22 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#incident-response-from-alert-to-resolution" class="md-nav__link">
+  <a href="#upgrade-operations-how-we-keep-clusters-current" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Incident Response — From Alert to Resolution
+        Upgrade Operations — How We Keep Clusters Current
       
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="Incident Response — From Alert to Resolution">
+    <nav class="md-nav" aria-label="Upgrade Operations — How We Keep Clusters Current">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#declaring-an-incident" class="md-nav__link">
+  <a href="#upgrade-stages-we-monitor" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Declaring an Incident
+        Upgrade Stages We Monitor
       
     </span>
   </a>
@@ -774,32 +791,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#during-the-incident" class="md-nav__link">
+  <a href="#when-upgrades-get-blocked" class="md-nav__link">
     <span class="md-ellipsis">
       
-        During the Incident
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#cross-region-handover-follow-the-sun" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Cross-Region Handover (Follow-the-Sun)
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#after-recovery" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        After Recovery
+        When Upgrades Get Blocked
       
     </span>
   </a>
@@ -812,22 +807,22 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#our-blameless-culture-how-we-practice-it" class="md-nav__link">
+  <a href="#diagnostic-data-collection" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Our Blameless Culture — How We Practice It
+        Diagnostic Data Collection
       
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="Our Blameless Culture — How We Practice It">
+    <nav class="md-nav" aria-label="Diagnostic Data Collection">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#post-incident-reviews-focus-on-systems-not-people" class="md-nav__link">
+  <a href="#must-gather-standard-diagnostics" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Post-Incident Reviews Focus on Systems, Not People
+        must-gather (Standard Diagnostics)
       
     </span>
   </a>
@@ -835,10 +830,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#psychologically-safe-retrospectives" class="md-nav__link">
+  <a href="#targeted-collection" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Psychologically Safe Retrospectives
+        Targeted Collection
       
     </span>
   </a>
@@ -846,10 +841,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#shadow-on-call-for-new-team-members" class="md-nav__link">
+  <a href="#quick-node-diagnostics" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Shadow On-Call for New Team Members
+        Quick Node Diagnostics
       
     </span>
   </a>
@@ -857,38 +852,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#ai-assisted-rca" class="md-nav__link">
+  <a href="#when-to-collect" class="md-nav__link">
     <span class="md-ellipsis">
       
-        AI-Assisted RCA
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#anti-patterns-we-eliminated" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Anti-Patterns We Eliminated
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Anti-Patterns We Eliminated">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#toil-reduction-loop" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Toil Reduction Loop
+        When to Collect
       
     </span>
   </a>
@@ -915,34 +882,6 @@
   
 </nav>
       
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../05-HOW-WE-OPERATE-OCP-CLUSTERS/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Session 5: How We Operate OCP Clusters
-  
-
-    
-  </span>
-  
-  
-
-      </a>
     </li>
   
 
@@ -1116,22 +1055,33 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#our-sre-organization-structure-and-dual-operating-model" class="md-nav__link">
+  <a href="#cluster-access-how-we-get-in" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Our SRE Organization — Structure and Dual Operating Model
+        Cluster Access — How We Get In
       
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="Our SRE Organization — Structure and Dual Operating Model">
+    <nav class="md-nav" aria-label="Cluster Access — How We Get In">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#sprint-capacity-allocation" class="md-nav__link">
+  <a href="#centralized-access-with-least-privilege" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Sprint Capacity Allocation
+        Centralized Access with Least Privilege
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#how-it-works-in-practice" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        How It Works in Practice
       
     </span>
   </a>
@@ -1144,33 +1094,22 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#principles-of-our-sre-culture" class="md-nav__link">
+  <a href="#cluster-lifecycle-operations" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Principles of Our SRE Culture
+        Cluster Lifecycle Operations
       
     </span>
   </a>
   
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#domain-based-functional-teams" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Domain-Based Functional Teams
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Domain-Based Functional Teams">
+    <nav class="md-nav" aria-label="Cluster Lifecycle Operations">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#roles-within-team" class="md-nav__link">
+  <a href="#provisioning-failure-triage" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Roles Within Team
+        Provisioning Failure Triage
       
     </span>
   </a>
@@ -1178,10 +1117,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#why-domain-teams-work" class="md-nav__link">
+  <a href="#deprovisioning-and-orphan-cleanup" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Why Domain Teams Work
+        Deprovisioning and Orphan Cleanup
       
     </span>
   </a>
@@ -1194,22 +1133,22 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#how-we-run-on-call" class="md-nav__link">
+  <a href="#node-management-and-maintenance" class="md-nav__link">
     <span class="md-ellipsis">
       
-        How We Run On-Call
+        Node Management and Maintenance
       
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="How We Run On-Call">
+    <nav class="md-nav" aria-label="Node Management and Maintenance">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#pagerduty-driven-rotation" class="md-nav__link">
+  <a href="#node-maintenance-process-aligned-with-ocp-docs" class="md-nav__link">
     <span class="md-ellipsis">
       
-        PagerDuty-Driven Rotation
+        Node Maintenance Process (Aligned with OCP Docs)
       
     </span>
   </a>
@@ -1217,10 +1156,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#shift-handover-process" class="md-nav__link">
+  <a href="#node-replacement-preferred-over-drainreboot" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Shift Handover Process
+        Node Replacement (Preferred Over Drain/Reboot)
       
     </span>
   </a>
@@ -1228,21 +1167,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#cad-our-automation-layer-between-pagerduty-and-sre" class="md-nav__link">
+  <a href="#infrastructure-node-resizing" class="md-nav__link">
     <span class="md-ellipsis">
       
-        CAD — Our Automation Layer Between PagerDuty and SRE
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#what-on-call-is-and-is-not" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        What On-Call IS and IS NOT
+        Infrastructure Node Resizing
       
     </span>
   </a>
@@ -1255,22 +1183,22 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#incident-response-from-alert-to-resolution" class="md-nav__link">
+  <a href="#upgrade-operations-how-we-keep-clusters-current" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Incident Response — From Alert to Resolution
+        Upgrade Operations — How We Keep Clusters Current
       
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="Incident Response — From Alert to Resolution">
+    <nav class="md-nav" aria-label="Upgrade Operations — How We Keep Clusters Current">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#declaring-an-incident" class="md-nav__link">
+  <a href="#upgrade-stages-we-monitor" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Declaring an Incident
+        Upgrade Stages We Monitor
       
     </span>
   </a>
@@ -1278,32 +1206,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#during-the-incident" class="md-nav__link">
+  <a href="#when-upgrades-get-blocked" class="md-nav__link">
     <span class="md-ellipsis">
       
-        During the Incident
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#cross-region-handover-follow-the-sun" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Cross-Region Handover (Follow-the-Sun)
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#after-recovery" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        After Recovery
+        When Upgrades Get Blocked
       
     </span>
   </a>
@@ -1316,22 +1222,22 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#our-blameless-culture-how-we-practice-it" class="md-nav__link">
+  <a href="#diagnostic-data-collection" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Our Blameless Culture — How We Practice It
+        Diagnostic Data Collection
       
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="Our Blameless Culture — How We Practice It">
+    <nav class="md-nav" aria-label="Diagnostic Data Collection">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#post-incident-reviews-focus-on-systems-not-people" class="md-nav__link">
+  <a href="#must-gather-standard-diagnostics" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Post-Incident Reviews Focus on Systems, Not People
+        must-gather (Standard Diagnostics)
       
     </span>
   </a>
@@ -1339,10 +1245,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#psychologically-safe-retrospectives" class="md-nav__link">
+  <a href="#targeted-collection" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Psychologically Safe Retrospectives
+        Targeted Collection
       
     </span>
   </a>
@@ -1350,10 +1256,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#shadow-on-call-for-new-team-members" class="md-nav__link">
+  <a href="#quick-node-diagnostics" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Shadow On-Call for New Team Members
+        Quick Node Diagnostics
       
     </span>
   </a>
@@ -1361,38 +1267,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#ai-assisted-rca" class="md-nav__link">
+  <a href="#when-to-collect" class="md-nav__link">
     <span class="md-ellipsis">
       
-        AI-Assisted RCA
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#anti-patterns-we-eliminated" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Anti-Patterns We Eliminated
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Anti-Patterns We Eliminated">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#toil-reduction-loop" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Toil Reduction Loop
+        When to Collect
       
     </span>
   </a>
@@ -1435,363 +1313,264 @@
   
 
 
-<h1 id="session-4-how-we-run-sre">Session 4: How We Run SRE<a class="headerlink" href="#session-4-how-we-run-sre" title="Permanent link">⛓️</a></h1>
-<p><strong>Our Practices, Processes &amp; Lessons Learned</strong></p>
+<h1 id="session-5-how-we-operate-ocp-clusters">Session 5: How We Operate OCP Clusters<a class="headerlink" href="#session-5-how-we-operate-ocp-clusters" title="Permanent link">⛓️</a></h1>
+<p><strong>Day-to-Day Operations, Maintenance, and Cluster Lifecycle</strong></p>
 <p><strong>Presenter:</strong> Rohit Bhilare — Principal Site Reliability Engineer, Hybrid Platforms — ROSA, Red Hat
 <strong>Duration:</strong> 40 minutes | <strong>Format:</strong> Peer conversation, not a lecture
-<strong>Series:</strong> SRE Best Practices — How We Do Things (Session 4 of 14)
-<strong>Focus:</strong> Team structure, ownership, on-call, culture, and working principles</p>
+<strong>Series:</strong> SRE Best Practices — How We Do Things (Session 5 of 14)
+<strong>Focus:</strong> Cluster access, lifecycle operations, node management, upgrades, and diagnostics</p>
 <hr />
 <h2 id="agenda">Agenda<a class="headerlink" href="#agenda" title="Permanent link">⛓️</a></h2>
 <ul>
-<li>Our SRE Organization — Structure and Dual Operating Model</li>
-<li>Principles of Our SRE Culture</li>
-<li>Domain-Based Functional Teams</li>
-<li>How We Run On-Call (PagerDuty + CAD Automation)</li>
-<li>Incident Response — From Alert to Resolution</li>
-<li>Our Blameless Culture — How We Practice It</li>
-<li>Anti-Patterns We Eliminated</li>
+<li>Cluster Access — How We Get In</li>
+<li>Cluster Lifecycle Operations</li>
+<li>Node Management and Maintenance</li>
+<li>Upgrade Operations — How We Keep Clusters Current</li>
+<li>Diagnostic Data Collection</li>
 <li>Key Takeaways / Best Practices</li>
 </ul>
 <hr />
-<h2 id="our-sre-organization-structure-and-dual-operating-model">Our SRE Organization — Structure and Dual Operating Model<a class="headerlink" href="#our-sre-organization-structure-and-dual-operating-model" title="Permanent link">⛓️</a></h2>
-<p>Every engineer on the team operates in <strong>two modes</strong>:</p>
-<div class="language-text highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>                     +----------------------------+
-</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>                     |       SRE Platform          |
-</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>                     |    (Service Delivery)       |
-</span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>                     +----------------------------+
-</span><span id="__span-0-5"><a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>                                 |
-</span><span id="__span-0-6"><a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a>              +------------------+------------------+
-</span><span id="__span-0-7"><a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a>              |                                     |
-</span><span id="__span-0-8"><a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a>    +---------+----------+              +-----------+---------+
-</span><span id="__span-0-9"><a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a>    | Functional Work    |              | Operations (Ops)    |
-</span><span id="__span-0-10"><a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a>    | (70% of sprint)    |              | (On-call shifts)    |
-</span><span id="__span-0-11"><a id="__codelineno-0-11" name="__codelineno-0-11" href="#__codelineno-0-11"></a>    +--------------------+              +---------------------+
-</span><span id="__span-0-12"><a id="__codelineno-0-12" name="__codelineno-0-12" href="#__codelineno-0-12"></a>    | Platform features  |              | Alert response      |
-</span><span id="__span-0-13"><a id="__codelineno-0-13" name="__codelineno-0-13" href="#__codelineno-0-13"></a>    | Automation         |              | Incident management |
-</span><span id="__span-0-14"><a id="__codelineno-0-14" name="__codelineno-0-14" href="#__codelineno-0-14"></a>    | Operator dev       |              | Customer escalation |
-</span><span id="__span-0-15"><a id="__codelineno-0-15" name="__codelineno-0-15" href="#__codelineno-0-15"></a>    | Tooling            |              | Shift improvement   |
-</span><span id="__span-0-16"><a id="__codelineno-0-16" name="__codelineno-0-16" href="#__codelineno-0-16"></a>    +--------------------+              +---------------------+
-</span></code></pre></div>
-<h3 id="sprint-capacity-allocation">Sprint Capacity Allocation<a class="headerlink" href="#sprint-capacity-allocation" title="Permanent link">⛓️</a></h3>
+<h2 id="cluster-access-how-we-get-in">Cluster Access — How We Get In<a class="headerlink" href="#cluster-access-how-we-get-in" title="Permanent link">⛓️</a></h2>
+<h3 id="centralized-access-with-least-privilege">Centralized Access with Least Privilege<a class="headerlink" href="#centralized-access-with-least-privilege" title="Permanent link">⛓️</a></h3>
+<p>All cluster access goes through a <strong>centralized access gateway</strong> — no direct SSH, no shared kubeconfigs, no static credentials.</p>
 <table>
 <thead>
 <tr>
-<th>Category</th>
-<th>% of Sprint</th>
-<th>Examples</th>
+<th>Aspect</th>
+<th>Our Approach</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td>Feature / Epic work</td>
-<td>70%</td>
-<td>Automation, operator development, platform improvements</td>
+<td>Default access</td>
+<td><strong>Read-only</strong> — SREs can view resources but cannot modify</td>
 </tr>
 <tr>
-<td>Shift improvement</td>
-<td>10%</td>
-<td>Fixing alert noise, improving runbooks, automating toil</td>
+<td>Elevation</td>
+<td>Per-command, not per-session — each write action requires explicit elevation</td>
 </tr>
 <tr>
-<td>Maintenance</td>
-<td>10%</td>
-<td>Dependency updates, PR reviews, Gardening</td>
+<td>Audit trail</td>
+<td>Every elevated action is logged with who, what, when, and why</td>
 </tr>
 <tr>
-<td>Learning goals</td>
-<td>5%</td>
-<td>Certifications, tech exploration, skill development</td>
+<td>Time-limited</td>
+<td>Sessions expire automatically after a fixed duration</td>
 </tr>
 <tr>
-<td>Buffer (PTO / ad-hoc)</td>
-<td>5%</td>
-<td>Unplanned work, coverage gaps</td>
+<td>Accountability</td>
+<td>You must provide a justification for every elevated action</td>
+</tr>
+</tbody>
+</table>
+<h3 id="how-it-works-in-practice">How It Works in Practice<a class="headerlink" href="#how-it-works-in-practice" title="Permanent link">⛓️</a></h3>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="c1"># Standard read access — works without elevation</span>
+</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>oc<span class="w"> </span>get<span class="w"> </span>nodes
+</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>oc<span class="w"> </span>get<span class="w"> </span>co
+</span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>oc<span class="w"> </span>get<span class="w"> </span>pods<span class="w"> </span>-A
+</span><span id="__span-0-5"><a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>
+</span><span id="__span-0-6"><a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a><span class="c1"># Write operations require elevation (per-command)</span>
+</span><span id="__span-0-7"><a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a><span class="c1"># Example: draining a node</span>
+</span><span id="__span-0-8"><a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a>oc<span class="w"> </span>adm<span class="w"> </span>drain<span class="w"> </span>&lt;node&gt;<span class="w"> </span>--ignore-daemonsets<span class="w"> </span>--delete-emptydir-data<span class="w"> </span>--as<span class="w"> </span>cluster-admin
+</span></code></pre></div>
+<blockquote>
+<p><strong>Principle:</strong> Least privilege by default. Elevate only when needed, only for the specific action. If something goes wrong, we can trace exactly what was done and by whom.</p>
+</blockquote>
+<hr />
+<h2 id="cluster-lifecycle-operations">Cluster Lifecycle Operations<a class="headerlink" href="#cluster-lifecycle-operations" title="Permanent link">⛓️</a></h2>
+<h3 id="provisioning-failure-triage">Provisioning Failure Triage<a class="headerlink" href="#provisioning-failure-triage" title="Permanent link">⛓️</a></h3>
+<p>When a cluster fails to provision, our automated investigation layer gathers initial data before an SRE is involved. When manual triage is needed:</p>
+<p><strong>What we check:</strong></p>
+<ul>
+<li><strong>Cloud account status</strong> — was the account provisioned correctly?</li>
+<li><strong>Cluster deployment conditions</strong> — what stage did it fail at?</li>
+<li><strong>Install logs</strong> — what error did the installer report?</li>
+<li><strong>Common red herrings</strong> — ingress/auth/console at 96-97% during install is normal (workers not ready yet); skip those</li>
+</ul>
+<h3 id="deprovisioning-and-orphan-cleanup">Deprovisioning and Orphan Cleanup<a class="headerlink" href="#deprovisioning-and-orphan-cleanup" title="Permanent link">⛓️</a></h3>
+<p>Stuck uninstalls happen more often than you'd expect. We follow a progression:</p>
+<ol>
+<li><strong>Customer self-service first</strong> — let the customer retry the deletion</li>
+<li><strong>Disable delete protection</strong> — if the cluster is stuck because of protection flags</li>
+<li><strong>Force delete</strong> — last resort, requires justification and tracking ticket</li>
+</ol>
+<hr />
+<h2 id="node-management-and-maintenance">Node Management and Maintenance<a class="headerlink" href="#node-management-and-maintenance" title="Permanent link">⛓️</a></h2>
+<h3 id="node-maintenance-process-aligned-with-ocp-docs">Node Maintenance Process (Aligned with OCP Docs)<a class="headerlink" href="#node-maintenance-process-aligned-with-ocp-docs" title="Permanent link">⛓️</a></h3>
+<p>When a node needs maintenance (OS update, hardware fix, kernel patching, firmware upgrade), we follow the standard OpenShift node maintenance workflow:</p>
+<p><strong>Step 1 — Mark the node as unschedulable (cordon)</strong></p>
+<p>Prevents the scheduler from placing new pods on this node:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>oc<span class="w"> </span>adm<span class="w"> </span>cordon<span class="w"> </span>&lt;node&gt;
+</span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>
+</span><span id="__span-1-3"><a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="c1"># Verify — STATUS should show SchedulingDisabled</span>
+</span><span id="__span-1-4"><a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a>oc<span class="w"> </span>get<span class="w"> </span>node<span class="w"> </span>&lt;node&gt;
+</span></code></pre></div>
+<p><strong>Step 2 — Evacuate pods from the node (drain)</strong></p>
+<p>Gracefully moves all pods to other available nodes:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>oc<span class="w"> </span>adm<span class="w"> </span>drain<span class="w"> </span>&lt;node&gt;<span class="w"> </span>--ignore-daemonsets<span class="w"> </span>--delete-emptydir-data<span class="w"> </span>--force
+</span></code></pre></div>
+<table>
+<thead>
+<tr>
+<th>Flag</th>
+<th>Why</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>--ignore-daemonsets</code></td>
+<td>DaemonSet pods can't be rescheduled elsewhere — skip them</td>
+</tr>
+<tr>
+<td><code>--delete-emptydir-data</code></td>
+<td>Pods using emptyDir volumes will lose that data — acknowledge it</td>
+</tr>
+<tr>
+<td><code>--force</code></td>
+<td>Evict pods not managed by a ReplicaSet/Deployment (standalone pods)</td>
 </tr>
 </tbody>
 </table>
 <blockquote>
-<p><strong>Key rule:</strong> During ops shifts, engineers do NOT pick up functional sprint tickets — focus stays on operations, peer reviews, and identifying shift improvements.</p>
+<p>If pods have <strong>PodDisruptionBudgets (PDBs)</strong>, the drain respects them — it won't evict more pods than the PDB allows. This protects application availability during maintenance.</p>
 </blockquote>
-<hr />
-<h2 id="principles-of-our-sre-culture">Principles of Our SRE Culture<a class="headerlink" href="#principles-of-our-sre-culture" title="Permanent link">⛓️</a></h2>
-<p><strong>These are the core values that shape how we work, how we treat each other, and how we make decisions as a team.</strong></p>
-<table>
-<thead>
-<tr>
-<th>#</th>
-<th>Principle</th>
-<th>What It Means In Practice</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>1</td>
-<td><strong>"It's OK to fail."</strong></td>
-<td>Learn from it; don't repeat it. Failure is expected in complex systems. We treat every failure as a learning opportunity, not a reason for blame. What matters is that we extract lessons and put safeguards in place so the same failure does not happen again.</td>
-</tr>
-<tr>
-<td>2</td>
-<td><strong>"Assume positive intent."</strong></td>
-<td>Information may be confidential. Ask questions — you may not get all the answers and may be asked to do some work without full context. Assume that people are acting with good intentions, even when the picture is incomplete.</td>
-</tr>
-<tr>
-<td>3</td>
-<td><strong>"Start with trust and extend trust."</strong></td>
-<td>We encourage curiosity and questions. But we do not make assumptions about people or their decisions. Trust is the default, not something that has to be earned through gatekeeping.</td>
-</tr>
-<tr>
-<td>4</td>
-<td><strong>"Disagree and commit."</strong></td>
-<td>Make a decision, move forward, learn from it, and course correct. Do not get caught up in analysis paralysis. It is better to act, learn, and adjust than to debate endlessly and never ship.</td>
-</tr>
-<tr>
-<td>5</td>
-<td><strong>"Communicate."</strong></td>
-<td>When in doubt, share more context, not less. Silence creates uncertainty. Whether it is an incident update, a design decision, or a process change — communicate early, communicate often, and communicate clearly.</td>
-</tr>
-</tbody>
-</table>
-<hr />
-<h2 id="domain-based-functional-teams">Domain-Based Functional Teams<a class="headerlink" href="#domain-based-functional-teams" title="Permanent link">⛓️</a></h2>
-<p>We organize into <strong>domain-based functional teams</strong>, each owning a specific area of the platform:</p>
-<table>
-<thead>
-<tr>
-<th>Domain</th>
-<th>Focus Areas</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Managed Platform</td>
-<td>Cluster lifecycle, upgrade orchestration, fleet management, notifications</td>
-</tr>
-<tr>
-<td>Networking &amp; Identity</td>
-<td>Network verification, ingress, account operations</td>
-</tr>
-<tr>
-<td>Observability</td>
-<td>Alerting, monitoring stack, backup &amp; restore</td>
-</tr>
-<tr>
-<td>IAM &amp; Access</td>
-<td>Cluster access, RBAC, validating webhooks</td>
-</tr>
-</tbody>
-</table>
-<h3 id="roles-within-team">Roles Within Team<a class="headerlink" href="#roles-within-team" title="Permanent link">⛓️</a></h3>
-<table>
-<thead>
-<tr>
-<th>Role</th>
-<th>Responsibility</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><strong>Functional Lead (FL)</strong></td>
-<td>Sprint planning, epic breakdown, stakeholder sync</td>
-</tr>
-<tr>
-<td><strong>Region Lead (RL)</strong></td>
-<td>Regional ops coordination; approves sensitive actions</td>
-</tr>
-<tr>
-<td><strong>Team Lead (TL)</strong></td>
-<td>Cross-team priorities; escalation decisions</td>
-</tr>
-</tbody>
-</table>
-<h3 id="why-domain-teams-work">Why Domain Teams Work<a class="headerlink" href="#why-domain-teams-work" title="Permanent link">⛓️</a></h3>
-<ul>
-<li><strong>Before:</strong> Everyone did everything — no deep expertise, constant context switching</li>
-<li><strong>After:</strong> Each team builds deep domain expertise while still rotating through ops</li>
-<li>People move between tracks over time for knowledge sharing</li>
-<li>Dedicated communication channels per domain — questions go to the right team, not a generic queue</li>
-</ul>
-<hr />
-<h2 id="how-we-run-on-call">How We Run On-Call<a class="headerlink" href="#how-we-run-on-call" title="Permanent link">⛓️</a></h2>
-<h3 id="pagerduty-driven-rotation">PagerDuty-Driven Rotation<a class="headerlink" href="#pagerduty-driven-rotation" title="Permanent link">⛓️</a></h3>
-<ul>
-<li><strong>Weekly rotation:</strong> One primary, one secondary</li>
-<li>Rotation changes on Monday mornings with a <strong>structured handoff</strong></li>
-<li>Automated bot announces shift changes so the whole team knows who is on point/on-call</li>
-<li>Engineers enter on-call shifts in on-call calendar <strong>at least 2 month ahead</strong></li>
-</ul>
-<h3 id="shift-handover-process">Shift Handover Process<a class="headerlink" href="#shift-handover-process" title="Permanent link">⛓️</a></h3>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="c1"># Check current on-call</span>
-</span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="nv">ESCALATION_POLICY_ID</span><span class="o">=</span>&lt;id&gt;
-</span><span id="__span-1-3"><a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a>pd<span class="w"> </span>ep:oncall<span class="w"> </span>-i<span class="w"> </span><span class="si">${</span><span class="nv">ESCALATION_POLICY_ID</span><span class="si">}</span><span class="w"> </span>--sort<span class="w"> </span>Level<span class="w"> </span><span class="se">\</span>
-</span><span id="__span-1-4"><a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a><span class="w">  </span>--since<span class="w"> </span><span class="s1">&#39;15 minutes ago&#39;</span><span class="w"> </span>--until<span class="w"> </span><span class="s1">&#39;15 minutes&#39;</span>
-</span><span id="__span-1-5"><a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a>
-</span><span id="__span-1-6"><a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a><span class="c1"># Reassign open incidents to incoming on-call</span>
-</span><span id="__span-1-7"><a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a>pd<span class="w"> </span>incident:list<span class="w"> </span>--me<span class="w"> </span>--pipe<span class="w"> </span><span class="p">|</span><span class="w"> </span><span class="se">\</span>
-</span><span id="__span-1-8"><a id="__codelineno-1-8" name="__codelineno-1-8" href="#__codelineno-1-8"></a><span class="w">  </span>pd<span class="w"> </span>incident:assign<span class="w"> </span>--assign_to_ep_id<span class="w"> </span><span class="si">${</span><span class="nv">ESCALATION_POLICY_ID</span><span class="si">}</span><span class="w"> </span>--pipe
+<p><strong>Step 3 — Perform maintenance</strong></p>
+<p>Node is now empty (except DaemonSets). Perform the required work — OS patching, hardware replacement, kernel update, etc.</p>
+<p><strong>Step 4 — Mark the node as schedulable again (uncordon)</strong></p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>oc<span class="w"> </span>adm<span class="w"> </span>uncordon<span class="w"> </span>&lt;node&gt;
+</span><span id="__span-3-2"><a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a>
+</span><span id="__span-3-3"><a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a><span class="c1"># Verify — SchedulingDisabled should be gone</span>
+</span><span id="__span-3-4"><a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a>oc<span class="w"> </span>get<span class="w"> </span>node<span class="w"> </span>&lt;node&gt;
 </span></code></pre></div>
-<p>Handoff includes: open incidents, known issues, upcoming changes, anything unusual.</p>
-<h3 id="cad-our-automation-layer-between-pagerduty-and-sre">CAD — Our Automation Layer Between PagerDuty and SRE<a class="headerlink" href="#cad-our-automation-layer-between-pagerduty-and-sre" title="Permanent link">⛓️</a></h3>
-<div class="language-text highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>Alert fires → PagerDuty (critical) → CAD webhook
-</span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>                                        |
-</span><span id="__span-2-3"><a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a>                      +-----------------+------------------+
-</span><span id="__span-2-4"><a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a>                      |                 |                  |
-</span><span id="__span-2-5"><a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a>              Auto-silence      Gather data &amp;       No investigation
-</span><span id="__span-2-6"><a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a>            (known customer     escalate to SRE      available →
-</span><span id="__span-2-7"><a id="__codelineno-2-7" name="__codelineno-2-7" href="#__codelineno-2-7"></a>             failure → SRE     with notes attached   escalate to SRE
-</span><span id="__span-2-8"><a id="__codelineno-2-8" name="__codelineno-2-8" href="#__codelineno-2-8"></a>             never paged)
+<p><strong>Step 5 — Verify node health</strong></p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="c1"># Node should be Ready</span>
+</span><span id="__span-4-2"><a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a>oc<span class="w"> </span>get<span class="w"> </span>node<span class="w"> </span>&lt;node&gt;
+</span><span id="__span-4-3"><a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a>
+</span><span id="__span-4-4"><a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a><span class="c1"># Check that pods are scheduling back</span>
+</span><span id="__span-4-5"><a id="__codelineno-4-5" name="__codelineno-4-5" href="#__codelineno-4-5"></a>oc<span class="w"> </span>get<span class="w"> </span>pods<span class="w"> </span>--all-namespaces<span class="w"> </span>--field-selector<span class="w"> </span>spec.nodeName<span class="o">=</span>&lt;node&gt;
+</span><span id="__span-4-6"><a id="__codelineno-4-6" name="__codelineno-4-6" href="#__codelineno-4-6"></a>
+</span><span id="__span-4-7"><a id="__codelineno-4-7" name="__codelineno-4-7" href="#__codelineno-4-7"></a><span class="c1"># Resource utilization</span>
+</span><span id="__span-4-8"><a id="__codelineno-4-8" name="__codelineno-4-8" href="#__codelineno-4-8"></a>oc<span class="w"> </span>adm<span class="w"> </span>top<span class="w"> </span>node<span class="w"> </span>&lt;node&gt;
 </span></code></pre></div>
-<p><strong>Configuration Anomaly Detection (CAD)</strong> runs codified investigations:</p>
-<ul>
-<li>Receives PagerDuty webhook on PagerDuty alerts</li>
-<li>Auto-silences alerts for known customer-caused failures — <strong>SRE never paged</strong></li>
-<li>Gathers investigation data and attaches to PagerDuty notes before escalating</li>
-<li>Can auto-place clusters in <strong>limited support</strong> when root cause is clear</li>
-</ul>
-<h3 id="what-on-call-is-and-is-not">What On-Call IS and IS NOT<a class="headerlink" href="#what-on-call-is-and-is-not" title="Permanent link">⛓️</a></h3>
+<h3 id="node-replacement-preferred-over-drainreboot">Node Replacement (Preferred Over Drain/Reboot)<a class="headerlink" href="#node-replacement-preferred-over-drainreboot" title="Permanent link">⛓️</a></h3>
+<p>For managed clusters, replacing the machine is often cleaner than fixing a sick node:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="c1"># Find node → machine mapping</span>
+</span><span id="__span-5-2"><a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a>oc<span class="w"> </span>get<span class="w"> </span>nodes<span class="w"> </span>--output<span class="o">=</span><span class="s2">&quot;custom-columns=NODE:.metadata.name,\</span>
+</span><span id="__span-5-3"><a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a><span class="s2">  MACHINE:.metadata.annotations.machine\.openshift\.io/machine&quot;</span>
+</span><span id="__span-5-4"><a id="__codelineno-5-4" name="__codelineno-5-4" href="#__codelineno-5-4"></a>
+</span><span id="__span-5-5"><a id="__codelineno-5-5" name="__codelineno-5-5" href="#__codelineno-5-5"></a><span class="c1"># Delete the machine — a new one provisions automatically</span>
+</span><span id="__span-5-6"><a id="__codelineno-5-6" name="__codelineno-5-6" href="#__codelineno-5-6"></a>oc<span class="w"> </span>delete<span class="w"> </span>machine<span class="w"> </span>-n<span class="w"> </span>openshift-machine-api<span class="w"> </span>&lt;machine-name&gt;
+</span></code></pre></div>
+<p>Fresh node, fresh OS, clean state — this is our default approach unless there's a specific reason to preserve the node.</p>
+<h3 id="infrastructure-node-resizing">Infrastructure Node Resizing<a class="headerlink" href="#infrastructure-node-resizing" title="Permanent link">⛓️</a></h3>
+<p>When infra nodes are under resource pressure (typically from the monitoring stack or ingress):</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="c1"># Check current utilization</span>
+</span><span id="__span-6-2"><a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a>oc<span class="w"> </span>adm<span class="w"> </span>top<span class="w"> </span>node<span class="w"> </span>-l<span class="w"> </span>node-role.kubernetes.io/infra
+</span><span id="__span-6-3"><a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a>
+</span><span id="__span-6-4"><a id="__codelineno-6-4" name="__codelineno-6-4" href="#__codelineno-6-4"></a><span class="c1"># Prometheus queries for deeper analysis</span>
+</span><span id="__span-6-5"><a id="__codelineno-6-5" name="__codelineno-6-5" href="#__codelineno-6-5"></a><span class="c1"># CPU by pod on infra node:</span>
+</span><span id="__span-6-6"><a id="__codelineno-6-6" name="__codelineno-6-6" href="#__codelineno-6-6"></a>sort_desc<span class="o">(</span>sum<span class="w"> </span>by<span class="w"> </span><span class="o">(</span>pod,<span class="w"> </span>namespace<span class="o">)</span><span class="w"> </span><span class="o">(</span>rate<span class="o">(</span>container_cpu_usage_seconds_total<span class="o">{</span><span class="nv">node</span><span class="o">=</span><span class="s2">&quot;&lt;infra_node&gt;&quot;</span><span class="o">}[</span>5m<span class="o">])))</span>
+</span><span id="__span-6-7"><a id="__codelineno-6-7" name="__codelineno-6-7" href="#__codelineno-6-7"></a>
+</span><span id="__span-6-8"><a id="__codelineno-6-8" name="__codelineno-6-8" href="#__codelineno-6-8"></a><span class="c1"># Memory by pod on infra node:</span>
+</span><span id="__span-6-9"><a id="__codelineno-6-9" name="__codelineno-6-9" href="#__codelineno-6-9"></a>sort_desc<span class="o">(</span>sum<span class="w"> </span>by<span class="w"> </span><span class="o">(</span>pod,<span class="w"> </span>namespace<span class="o">)</span><span class="w"> </span><span class="o">(</span>container_memory_usage_bytes<span class="o">{</span><span class="nv">node</span><span class="o">=</span><span class="s2">&quot;&lt;infra_node&gt;&quot;</span><span class="o">}))</span>
+</span></code></pre></div>
+<p>We use automated tooling to resize infra nodes to larger instance types when utilization exceeds thresholds.</p>
+<hr />
+<h2 id="upgrade-operations-how-we-keep-clusters-current">Upgrade Operations — How We Keep Clusters Current<a class="headerlink" href="#upgrade-operations-how-we-keep-clusters-current" title="Permanent link">⛓️</a></h2>
+<h3 id="upgrade-stages-we-monitor">Upgrade Stages We Monitor<a class="headerlink" href="#upgrade-stages-we-monitor" title="Permanent link">⛓️</a></h3>
+<p>Upgrades run through these stages automatically. We monitor each one:</p>
 <table>
 <thead>
 <tr>
-<th>On-call IS</th>
-<th>On-call IS NOT</th>
+<th>Stage</th>
+<th>What SRE Watches</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td>Respond to firing alerts within 15 minutes</td>
-<td>Investigating every issue alone</td>
+<td><strong>Pre-health check</strong></td>
+<td>No critical alerts firing before upgrade starts</td>
 </tr>
 <tr>
-<td>Triage critical issues and escalate if needed</td>
-<td>Being awake 24/7 — secondary exists for a reason</td>
+<td><strong>Control plane upgrade</strong></td>
+<td>Control plane nodes upgraded successfully</td>
 </tr>
 <tr>
-<td>Update the team in our incident channel</td>
-<td>Fixing everything yourself — mitigate and hand off</td>
+<td><strong>Worker node upgrade</strong></td>
+<td>Workers draining and upgrading (longest stage)</td>
 </tr>
 <tr>
-<td>Log all actions in the ticket</td>
-<td>Deep-diving into root cause during an active outage</td>
+<td><strong>Post-health check</strong></td>
+<td>DaemonSets, ReplicaSets healthy after upgrade</td>
+</tr>
+<tr>
+<td><strong>Completion notification</strong></td>
+<td>Upgrade status synced to management layer</td>
 </tr>
 </tbody>
 </table>
-<hr />
-<h2 id="incident-response-from-alert-to-resolution">Incident Response — From Alert to Resolution<a class="headerlink" href="#incident-response-from-alert-to-resolution" title="Permanent link">⛓️</a></h2>
-<h3 id="declaring-an-incident">Declaring an Incident<a class="headerlink" href="#declaring-an-incident" title="Permanent link">⛓️</a></h3>
-<ol>
-<li>Run <strong><code>/rca new</code></strong> in the SRE channel or create incident in WebRCA UI console</li>
-<li>WebRCA auto-creates:</li>
-<li>Dedicated incident channel</li>
-<li>Video/Meet bridge link</li>
-<li>Announcement in the incidents channel</li>
-<li>Join bridge; enable <strong>AI transcription</strong> for automated note-taking</li>
-<li>Start customer communication (service logs or status page update)</li>
-</ol>
-<h3 id="during-the-incident">During the Incident<a class="headerlink" href="#during-the-incident" title="Permanent link">⛓️</a></h3>
-<ul>
-<li>Record <strong>all</strong> communication and actions in the incident channel</li>
-<li>CEE Team leads customer-facing communication when on bridge</li>
-<li>Post periodic executive summaries</li>
-<li>Alert storms: Run <code>pd-ack-all</code> script to bulk-acknowledge</li>
-</ul>
-<h3 id="cross-region-handover-follow-the-sun">Cross-Region Handover (Follow-the-Sun)<a class="headerlink" href="#cross-region-handover-follow-the-sun" title="Permanent link">⛓️</a></h3>
-<p>Executive summary must include:</p>
-<ul>
-<li>Technical status and current hypothesis</li>
-<li>Time and content of last customer update</li>
-<li>External stakeholders engaged</li>
-<li>Next steps and open action items</li>
-</ul>
-<h3 id="after-recovery">After Recovery<a class="headerlink" href="#after-recovery" title="Permanent link">⛓️</a></h3>
-<ul>
-<li>Update tracking ticket</li>
-<li>Complete RCA using <code>incident-rca</code> utility</li>
-<li>Schedule <strong>PMR (Post-Mortem Review) within 5/7 business days</strong></li>
-<li>Drive follow-up actions to completion</li>
-<li>Archive incident channel</li>
-</ul>
-<hr />
-<h2 id="our-blameless-culture-how-we-practice-it">Our Blameless Culture — How We Practice It<a class="headerlink" href="#our-blameless-culture-how-we-practice-it" title="Permanent link">⛓️</a></h2>
-<p><strong>Blameless culture is not a slogan on our wiki. It is a set of specific practices we enforce.</strong></p>
-<h3 id="post-incident-reviews-focus-on-systems-not-people">Post-Incident Reviews Focus on Systems, Not People<a class="headerlink" href="#post-incident-reviews-focus-on-systems-not-people" title="Permanent link">⛓️</a></h3>
-<ul>
-<li>We ask: <em>"What allowed this to happen?"</em> — never <em>"Who did this?"</em></li>
-<li>Root cause is always a process gap, a missing check, or a tooling failure — never a person</li>
-</ul>
-<h3 id="psychologically-safe-retrospectives">Psychologically Safe Retrospectives<a class="headerlink" href="#psychologically-safe-retrospectives" title="Permanent link">⛓️</a></h3>
-<ul>
-<li>Retros use <strong>anonymous Google Forms</strong> — a facilitator reads comments aloud as "anonymous contributor"</li>
-<li>Start/Stop/Continue format with action items assigned to owners</li>
-<li>Quarterly team health checks with anonymous feedback to management</li>
-</ul>
-<h3 id="shadow-on-call-for-new-team-members">Shadow On-Call for New Team Members<a class="headerlink" href="#shadow-on-call-for-new-team-members" title="Permanent link">⛓️</a></h3>
-<ul>
-<li>New engineers shadow for <strong>two full rotations</strong> before going primary</li>
-<li>They observe, ask questions, and build confidence without the pressure of being the decision-maker</li>
-</ul>
-<h3 id="ai-assisted-rca">AI-Assisted RCA<a class="headerlink" href="#ai-assisted-rca" title="Permanent link">⛓️</a></h3>
-<ul>
-<li>We use automated tools to summarize incident channels for RCA</li>
-<li>RCA generation utilities pull events and follow-ups, outputting structured data for the RCA template</li>
-<li>This reduces the manual burden of reconstructing timelines so engineers can focus on analysis</li>
-</ul>
-<hr />
-<h2 id="anti-patterns-we-eliminated">Anti-Patterns We Eliminated<a class="headerlink" href="#anti-patterns-we-eliminated" title="Permanent link">⛓️</a></h2>
-<table>
-<thead>
-<tr>
-<th>What others Do</th>
-<th>What We Do</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Random ad-hoc calls for every issue</td>
-<td>Structured workflow: PagerDuty → CAD → SRE → WebRCA if needed</td>
-</tr>
-<tr>
-<td>One person held all the knowledge</td>
-<td>200+ documented runbooks, enforced rotation across all systems</td>
-</tr>
-<tr>
-<td>Hundreds of noisy alerts firing constantly</td>
-<td>Alert graduation pipeline (soaking → warning → critical) + runbook requirement</td>
-</tr>
-<tr>
-<td>Manual investigation for every alert</td>
-<td>CAD auto-investigates and auto-silences known failures</td>
-</tr>
-<tr>
-<td>Upgrades feared and delayed for months</td>
-<td>Progressive delivery: INT → STAGE → PROD Canary → Phase 2 → Phase 3</td>
-</tr>
-<tr>
-<td>Post-mortems blamed individuals</td>
-<td>PMR within 5/7 days, anonymous retros, psychologically safe</td>
-</tr>
-<tr>
-<td>Knowledge locked in DMs and heads</td>
-<td>"Ask in public channels" rule + regular knowledge sharing</td>
-</tr>
-</tbody>
-</table>
-<h3 id="toil-reduction-loop">Toil Reduction Loop<a class="headerlink" href="#toil-reduction-loop" title="Permanent link">⛓️</a></h3>
-<div class="language-text highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>Alert fires → SRE investigates → Creates shift-improvement card for any kind of improvement
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-7-1"><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="c1"># Monitor upgrade progress</span>
+</span><span id="__span-7-2"><a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a>oc<span class="w"> </span>get<span class="w"> </span>clusterversion
+</span><span id="__span-7-3"><a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a>
+</span><span id="__span-7-4"><a id="__codelineno-7-4" name="__codelineno-7-4" href="#__codelineno-7-4"></a><span class="c1"># Watch node upgrade progress</span>
+</span><span id="__span-7-5"><a id="__codelineno-7-5" name="__codelineno-7-5" href="#__codelineno-7-5"></a>oc<span class="w"> </span>get<span class="w"> </span>nodes<span class="w"> </span>-o<span class="w"> </span>wide
+</span><span id="__span-7-6"><a id="__codelineno-7-6" name="__codelineno-7-6" href="#__codelineno-7-6"></a>oc<span class="w"> </span>get<span class="w"> </span>mcp
 </span></code></pre></div>
+<h3 id="when-upgrades-get-blocked">When Upgrades Get Blocked<a class="headerlink" href="#when-upgrades-get-blocked" title="Permanent link">⛓️</a></h3>
+<p>Pre-health check failures are the most common blocker — usually another critical alert is firing:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-8-1"><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a><span class="c1"># Find degraded operators blocking the upgrade</span>
+</span><span id="__span-8-2"><a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a>oc<span class="w"> </span>get<span class="w"> </span>co<span class="w"> </span><span class="p">|</span><span class="w"> </span>awk<span class="w"> </span><span class="s1">&#39;NR&gt;1 { if($3==&quot;False&quot; || $5==&quot;True&quot;) print }&#39;</span>
+</span></code></pre></div>
+<p><strong>Resolution:</strong> Fix the degraded operator first. The upgrade auto-proceeds once pre-health checks pass.</p>
+<hr />
+<h2 id="diagnostic-data-collection">Diagnostic Data Collection<a class="headerlink" href="#diagnostic-data-collection" title="Permanent link">⛓️</a></h2>
+<h3 id="must-gather-standard-diagnostics">must-gather (Standard Diagnostics)<a class="headerlink" href="#must-gather-standard-diagnostics" title="Permanent link">⛓️</a></h3>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-9-1"><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a><span class="nv">TMP_DIR</span><span class="o">=</span><span class="k">$(</span>mktemp<span class="w"> </span>-d<span class="k">)</span>
+</span><span id="__span-9-2"><a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a>
+</span><span id="__span-9-3"><a id="__codelineno-9-3" name="__codelineno-9-3" href="#__codelineno-9-3"></a><span class="c1"># General must-gather — collects everything</span>
+</span><span id="__span-9-4"><a id="__codelineno-9-4" name="__codelineno-9-4" href="#__codelineno-9-4"></a>oc<span class="w"> </span>adm<span class="w"> </span>must-gather<span class="w"> </span>--dest-dir<span class="o">=</span><span class="nv">$TMP_DIR</span>
+</span><span id="__span-9-5"><a id="__codelineno-9-5" name="__codelineno-9-5" href="#__codelineno-9-5"></a>
+</span><span id="__span-9-6"><a id="__codelineno-9-6" name="__codelineno-9-6" href="#__codelineno-9-6"></a><span class="c1"># Package for sharing</span>
+</span><span id="__span-9-7"><a id="__codelineno-9-7" name="__codelineno-9-7" href="#__codelineno-9-7"></a>tar<span class="w"> </span>-cJf<span class="w"> </span>must-gather.<span class="k">$(</span>date<span class="w"> </span>-u<span class="w"> </span>+%Y%m%dT%H%M%SZ<span class="k">)</span>.tar.xz<span class="w"> </span>-C<span class="w"> </span><span class="nv">$TMP_DIR</span><span class="w"> </span>./
+</span></code></pre></div>
+<h3 id="targeted-collection">Targeted Collection<a class="headerlink" href="#targeted-collection" title="Permanent link">⛓️</a></h3>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-10-1"><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a><span class="c1"># Namespace-specific inspect (faster, smaller output)</span>
+</span><span id="__span-10-2"><a id="__codelineno-10-2" name="__codelineno-10-2" href="#__codelineno-10-2"></a>oc<span class="w"> </span>adm<span class="w"> </span>inspect<span class="w"> </span>--dest-dir<span class="o">=</span><span class="nv">$TMP_DIR</span><span class="w"> </span>ns/openshift-marketplace
+</span><span id="__span-10-3"><a id="__codelineno-10-3" name="__codelineno-10-3" href="#__codelineno-10-3"></a>
+</span><span id="__span-10-4"><a id="__codelineno-10-4" name="__codelineno-10-4" href="#__codelineno-10-4"></a><span class="c1"># Collect data for a specific operator (e.g., OpenShift Virtualization)</span>
+</span><span id="__span-10-5"><a id="__codelineno-10-5" name="__codelineno-10-5" href="#__codelineno-10-5"></a>oc<span class="w"> </span>adm<span class="w"> </span>must-gather<span class="w"> </span>--dest-dir<span class="o">=</span><span class="nv">$TMP_DIR</span><span class="w"> </span><span class="se">\</span>
+</span><span id="__span-10-6"><a id="__codelineno-10-6" name="__codelineno-10-6" href="#__codelineno-10-6"></a><span class="w">  </span>--image<span class="o">=</span>registry.redhat.io/container-native-virtualization/cnv-must-gather-rhel9:v4.17.0
+</span></code></pre></div>
+<h3 id="quick-node-diagnostics">Quick Node Diagnostics<a class="headerlink" href="#quick-node-diagnostics" title="Permanent link">⛓️</a></h3>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-11-1"><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a><span class="c1"># Debug a node directly</span>
+</span><span id="__span-11-2"><a id="__codelineno-11-2" name="__codelineno-11-2" href="#__codelineno-11-2"></a>oc<span class="w"> </span>debug<span class="w"> </span>node/&lt;node&gt;
+</span><span id="__span-11-3"><a id="__codelineno-11-3" name="__codelineno-11-3" href="#__codelineno-11-3"></a>
+</span><span id="__span-11-4"><a id="__codelineno-11-4" name="__codelineno-11-4" href="#__codelineno-11-4"></a><span class="c1"># Node logs by service</span>
+</span><span id="__span-11-5"><a id="__codelineno-11-5" name="__codelineno-11-5" href="#__codelineno-11-5"></a>oc<span class="w"> </span>adm<span class="w"> </span>node-logs<span class="w"> </span>node/&lt;node&gt;
+</span><span id="__span-11-6"><a id="__codelineno-11-6" name="__codelineno-11-6" href="#__codelineno-11-6"></a>oc<span class="w"> </span>adm<span class="w"> </span>node-logs<span class="w"> </span>-u<span class="w"> </span>crio<span class="w"> </span>node/&lt;node&gt;
+</span><span id="__span-11-7"><a id="__codelineno-11-7" name="__codelineno-11-7" href="#__codelineno-11-7"></a>oc<span class="w"> </span>adm<span class="w"> </span>node-logs<span class="w"> </span>-u<span class="w"> </span>kubelet<span class="w"> </span>node/&lt;node&gt;
+</span></code></pre></div>
+<h3 id="when-to-collect">When to Collect<a class="headerlink" href="#when-to-collect" title="Permanent link">⛓️</a></h3>
+<ul>
+<li>Active incidents where the root cause is unclear</li>
+<li>Before escalating to engineering or vendor support</li>
+<li>For RCA evidence after an outage</li>
+</ul>
+<blockquote>
+<p><strong>Important:</strong> must-gather output can contain sensitive data. Always sanitize before uploading to external systems.</p>
+</blockquote>
 <hr />
 <h2 id="key-takeaways-best-practices">Key Takeaways / Best Practices<a class="headerlink" href="#key-takeaways-best-practices" title="Permanent link">⛓️</a></h2>
 <ol>
-<li><strong>Adopt a dual operating model</strong> — separate functional work from ops, with clear sprint allocation (70/10/10/5/5)</li>
-<li><strong>Organize by domain</strong> — functional teams build deep expertise while rotating through shared on-call</li>
-<li><strong>Automate the investigation layer</strong> — tools like CAD between PagerDuty and SRE dramatically reduce page volume</li>
-<li><strong>Enforce the runbook rule</strong> — no runbook = no alert. This forces intentional, actionable alerting</li>
-<li><strong>Make on-call sustainable</strong> — page budgets, structured handoffs, and "fix the system, not the engineer" mindset</li>
-<li><strong>Practice blameless culture with specific habits</strong> — anonymous retros, no names in reports, near-miss sharing</li>
-<li><strong>Use progressive delivery for changes</strong> — INT → STAGE → PROD with soak periods eliminates risky big-bang releases</li>
-<li><strong>Close the toil reduction loop</strong> — every manual investigation should feed back into automation so it never pages again</li>
+<li><strong>Use centralized access with least-privilege elevation</strong> — no shared kubeconfigs, no persistent admin sessions, full audit trail</li>
+<li><strong>Have runbooks for cluster lifecycle events</strong> — provisioning failures and stuck uninstalls need documented procedures</li>
+<li><strong>Follow the cordon → drain → maintain → uncordon workflow</strong> — standard OCP process, no shortcuts</li>
+<li><strong>Set PodDisruptionBudgets for critical workloads</strong> — drain respects PDBs and protects application availability</li>
+<li><strong>Monitor upgrades stage by stage</strong> — know what stage is running and what to watch for at each step</li>
+<li><strong>Collect must-gather during incidents</strong> — if you skip it, you lose the diagnostic snapshot</li>
+<li><strong>Replace nodes, don't fix them</strong> — fresh machine, fresh OS, clean state</li>
 </ol>
-<hr />
-<p><strong>Up Next:</strong> Session 5 — How We Operate OCP Clusters</p>
+<p><strong>Up Next:</strong> Session 6 — Inside SRE: Ask &amp; Discuss Anything</p>
 
 
 
