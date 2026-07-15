@@ -1,1 +1,0 @@
-../../sessions/02-FOLLOW-THE-SUN-MODEL.md

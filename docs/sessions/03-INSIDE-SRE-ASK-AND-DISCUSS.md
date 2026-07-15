@@ -1,1 +1,0 @@
-../../sessions/03-INSIDE-SRE-ASK-AND-DISCUSS.md

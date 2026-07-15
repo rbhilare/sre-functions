@@ -25,11 +25,18 @@ jobs:
       - name: Install MkDocs Material
         run: pip install mkdocs-material
 
-      - name: Create overrides directory
-        run: mkdir -p docs/overrides
-
-      - name: Remove speaker notes from docs
-        run: rm -f docs/sessions/*-notes.md
+      - name: Prepare docs
+        run: |
+          mkdir -p docs/sessions docs/overrides
+          for f in sessions/*.md; do
+            name=$(basename "$f")
+            case "$name" in
+              *-notes.md) ;;
+              *) cp "$f" docs/sessions/ ;;
+            esac
+          done
+          echo "Files copied to docs/sessions/:"
+          ls -1 docs/sessions/
 
       - name: Build and deploy to gh-pages
         env:

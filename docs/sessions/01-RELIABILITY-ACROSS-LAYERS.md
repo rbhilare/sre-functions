@@ -1,1 +1,0 @@
-../../sessions/01-RELIABILITY-ACROSS-LAYERS.md

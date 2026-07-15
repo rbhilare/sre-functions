@@ -28,8 +28,8 @@
 | 2 | [Follow-the-Sun (FTS) Model for SRE Environment](02-FOLLOW-THE-SUN-MODEL.md) | 30 min | Content |
 | 3 | [Inside SRE: Ask & Discuss Anything](03-INSIDE-SRE-ASK-AND-DISCUSS.md) | 30 min | Q&A |
 | 4 | [How We Run SRE](04-HOW-WE-RUN-SRE.md) | 40 min | Content |
-| 5 | How We Operate OCP Clusters | 40 min | Content |
-| 6 | Inside SRE: Ask & Discuss Anything | 30 min | Q&A |
+| 5 | [How We Operate OCP Clusters](05-HOW-WE-OPERATE-OCP-CLUSTERS.md) | 40 min | Content |
+| 6 | [Inside SRE: Ask & Discuss Anything](06-INSIDE-SRE-ASK-AND-DISCUSS.md) | 30 min | Q&A |
 | 7 | How We Monitor and Alert | 30 min | Content |
 | 8 | How We Handle Incidents | 30 min | Content |
 | 9 | Inside SRE: Ask & Discuss Anything | 30 min | Q&A |
@@ -81,15 +81,15 @@ Team structure, RACI, on-call rotations, blameless culture, working principles (
 
 ---
 
-### Session 5: How We Operate OCP Clusters (40 min)
+### Session 5: [How We Operate OCP Clusters](05-HOW-WE-OPERATE-OCP-CLUSTERS.md) (40 min)
 
-Daily/weekly/monthly operational routines, node and MachineConfigPool management, CNV operations, certificate lifecycle, and mirror registry management in disconnected environments.
+How our SRE team operates the OCP clusters we provide — cluster access model, lifecycle operations (provisioning/deprovisioning), node maintenance workflow, upgrade monitoring, and diagnostic data collection.
 
 ---
 
-### Session 6: Inside SRE — Ask & Discuss Anything (30 min)
+### Session 6: [Inside SRE — Ask & Discuss Anything](06-INSIDE-SRE-ASK-AND-DISCUSS.md) (30 min)
 
-Open Q&A covering Sessions 4–5. Discussion prompts around SRE team structure and OCP operations.
+Open Q&A covering Sessions 4–5. Discussion prompts around SRE team structure, culture principles, and OCP cluster operations.
 
 ---
 
