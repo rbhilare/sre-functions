@@ -33,11 +33,3 @@ Open forum for the partner team to ask questions, discuss ideas, and share their
 - Do you operate a Follow-the-Sun model? What challenges have you faced?
 - What would you like us to go deeper on?
 
----
-
-## Facilitator Notes
-
-- This is their session — listen more than you talk
-- Capture questions that need follow-up and address them before the next session
-- Note any topics they want deeper coverage on — adjust upcoming sessions accordingly
-- If the discussion is quiet, use the prompts above to get it started
