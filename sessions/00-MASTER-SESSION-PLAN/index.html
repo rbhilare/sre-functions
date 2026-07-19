@@ -23,7 +23,7 @@
       
       
       <link rel="icon" href="../../assets/images/favicon.png">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.6">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
     
     
       
@@ -31,7 +31,7 @@
       
     
     
-      <link rel="stylesheet" href="../../assets/stylesheets/main.484c7ddc.min.css">
+      <link rel="stylesheet" href="../../assets/stylesheets/main.ec1eaa64.min.css">
       
         
         <link rel="stylesheet" href="../../assets/stylesheets/palette.ab4e12ef.min.css">
@@ -690,6 +690,10 @@
       
         
       
+        
+      
+        
+      
     
     
     
@@ -849,6 +853,62 @@
 
               
             
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../07-HOW-WE-MONITOR-AND-ALERT/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Session 7: How We Monitor and Alert
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../08-HOW-WE-HANDLE-INCIDENTS/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Session 8: How We Handle Incidents
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
           </ul>
         </nav>
       
@@ -864,6 +924,8 @@
   
     
     
+      
+        
       
         
       
@@ -959,6 +1021,34 @@
     
   
     Session 6: Ask & Discuss (Sessions 4–5)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../09-INSIDE-SRE-ASK-AND-DISCUSS/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Session 9: Ask & Discuss (Sessions 7–8)
   
 
     
@@ -1327,19 +1417,19 @@
 </tr>
 <tr>
 <td style="text-align: center;">7</td>
-<td>How We Monitor and Alert</td>
+<td><a href="../07-HOW-WE-MONITOR-AND-ALERT/">How We Monitor and Alert</a></td>
 <td style="text-align: center;">30 min</td>
 <td style="text-align: center;">Content</td>
 </tr>
 <tr>
 <td style="text-align: center;">8</td>
-<td>How We Handle Incidents</td>
+<td><a href="../08-HOW-WE-HANDLE-INCIDENTS/">How We Handle Incidents</a></td>
 <td style="text-align: center;">30 min</td>
 <td style="text-align: center;">Content</td>
 </tr>
 <tr>
 <td style="text-align: center;">9</td>
-<td>Inside SRE: Ask &amp; Discuss Anything</td>
+<td><a href="../09-INSIDE-SRE-ASK-AND-DISCUSS/">Inside SRE: Ask &amp; Discuss Anything</a></td>
 <td style="text-align: center;">30 min</td>
 <td style="text-align: center;">Q&amp;A</td>
 </tr>
@@ -1402,13 +1492,13 @@
 <h3 id="session-6-inside-sre-ask-discuss-anything-30-min">Session 6: <a href="../06-INSIDE-SRE-ASK-AND-DISCUSS/">Inside SRE — Ask &amp; Discuss Anything</a> (30 min)<a class="headerlink" href="#session-6-inside-sre-ask-discuss-anything-30-min" title="Permanent link">⛓️</a></h3>
 <p>Open Q&amp;A covering Sessions 4–5. Discussion prompts around SRE team structure, culture principles, and OCP cluster operations.</p>
 <hr />
-<h3 id="session-7-how-we-monitor-and-alert-30-min">Session 7: How We Monitor and Alert (30 min)<a class="headerlink" href="#session-7-how-we-monitor-and-alert-30-min" title="Permanent link">⛓️</a></h3>
-<p>Monitoring stack (Prometheus, Alertmanager, Loki), alert philosophy ("alert on actionables"), routing by severity, dashboards, alert fatigue elimination (how we went from 500 to 80 alerts), and our top 10 alert rules.</p>
+<h3 id="session-7-how-we-monitor-and-alert-30-min">Session 7: <a href="../07-HOW-WE-MONITOR-AND-ALERT/">How We Monitor and Alert</a> (30 min)<a class="headerlink" href="#session-7-how-we-monitor-and-alert-30-min" title="Permanent link">⛓️</a></h3>
+<p>Built-in monitoring stack (Prometheus, Alertmanager), our five-level severity model (critical, critical-FTS, high, medium, info), mandatory alert labels (<code>service</code> + <code>severity</code>), SLO-based multi-window multi-burn-rate alerting, alert routing via PagerDuty and Slack, Dead Man's Snitch (Watchdog), automated alert investigation, inhibition rules, alert graduation pipeline, runbook discipline (89% coverage across 2,700+ alerts), and how we reduced alert noise by ~80%.</p>
 <hr />
-<h3 id="session-8-how-we-handle-incidents-30-min">Session 8: How We Handle Incidents (30 min)<a class="headerlink" href="#session-8-how-we-handle-incidents-30-min" title="Permanent link">⛓️</a></h3>
-<p>Severity classification, 6-phase incident workflow, ServiceNow and Teams integration, status board, escalation paths, and post-incident reviews (PIRs).</p>
+<h3 id="session-8-how-we-handle-incidents-30-min">Session 8: <a href="../08-HOW-WE-HANDLE-INCIDENTS/">How We Handle Incidents</a> (30 min)<a class="headerlink" href="#session-8-how-we-handle-incidents-30-min" title="Permanent link">⛓️</a></h3>
+<p>Alert vs. incident distinction, four-phase incident lifecycle (Identify → Create → Resolve → Post-Incident), Sev1/2/3 severity classification with timed check-ins (20/30/60 min), three core roles (Tech Lead, Incident Owner, Scribe), customer communication matrix by impact scope, structured handover process for Follow-the-Sun, escalation triggers, and blameless post-mortem reviews with corrective action tracking.</p>
 <hr />
-<h3 id="session-9-inside-sre-ask-discuss-anything-30-min">Session 9: Inside SRE — Ask &amp; Discuss Anything (30 min)<a class="headerlink" href="#session-9-inside-sre-ask-discuss-anything-30-min" title="Permanent link">⛓️</a></h3>
+<h3 id="session-9-inside-sre-ask-discuss-anything-30-min">Session 9: <a href="../09-INSIDE-SRE-ASK-AND-DISCUSS/">Inside SRE — Ask &amp; Discuss Anything</a> (30 min)<a class="headerlink" href="#session-9-inside-sre-ask-discuss-anything-30-min" title="Permanent link">⛓️</a></h3>
 <p>Open Q&amp;A covering Sessions 7–8. Discussion prompts around monitoring, alert fatigue, and incident management.</p>
 <hr />
 <h3 id="session-10-how-we-measure-reliability-30-min">Session 10: How We Measure Reliability (30 min)<a class="headerlink" href="#session-10-how-we-measure-reliability-30-min" title="Permanent link">⛓️</a></h3>
@@ -1522,7 +1612,7 @@
       <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["navigation.tabs", "navigation.tabs.sticky", "navigation.sections", "navigation.expand", "navigation.top", "navigation.indexes", "navigation.instant", "navigation.tracking", "search.suggest", "search.highlight", "search.share", "content.tabs.link", "content.code.copy", "content.code.annotate", "toc.follow", "header.autohide", "announce.dismiss"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
     
     
-      <script src="../../assets/javascripts/bundle.79ae519e.min.js"></script>
+      <script src="../../assets/javascripts/bundle.d7400e89.min.js"></script>
       
     
   </body>

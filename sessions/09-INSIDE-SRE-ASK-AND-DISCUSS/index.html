@@ -13,10 +13,8 @@
       
       
       
-        <link rel="prev" href="../01-RELIABILITY-ACROSS-LAYERS/">
+        <link rel="prev" href="../06-INSIDE-SRE-ASK-AND-DISCUSS/">
       
-      
-        <link rel="next" href="../04-HOW-WE-RUN-SRE/">
       
       
         
@@ -27,7 +25,7 @@
     
     
       
-        <title>Session 2: Follow-the-Sun Model - SRE Best Practices — How We Do Things</title>
+        <title>Session 9: Ask & Discuss (Sessions 7–8) - SRE Best Practices — How We Do Things</title>
       
     
     
@@ -80,7 +78,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#session-2-follow-the-sun-fts-model-for-sre-environment" class="md-skip">
+        <a href="#session-9-inside-sre-ask-discuss-anything" class="md-skip">
           Skip to content
         </a>
       
@@ -116,7 +114,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Session 2: Follow-the-Sun Model
+              Session 9: Ask & Discuss (Sessions 7–8)
             
           </span>
         </div>
@@ -264,12 +262,10 @@
   
   
   
-    
-  
   
     
     
-      <li class="md-tabs__item md-tabs__item--active">
+      <li class="md-tabs__item">
         <a href="../01-RELIABILITY-ACROSS-LAYERS/" class="md-tabs__link">
           
   
@@ -288,10 +284,12 @@
   
   
   
+    
+  
   
     
     
-      <li class="md-tabs__item">
+      <li class="md-tabs__item md-tabs__item--active">
         <a href="../03-INSIDE-SRE-ASK-AND-DISCUSS/" class="md-tabs__link">
           
   
@@ -415,10 +413,8 @@
       
   
   
-    
   
   
-  
     
     
       
@@ -438,22 +434,21 @@
     
     
       
-        
-        
-      
       
         
       
     
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--nested">
       
         
-        
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" checked>
         
           
-          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="">
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
             
   
   
@@ -471,7 +466,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="true">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_3">
             <span class="md-nav__icon md-icon"></span>
             
@@ -514,37 +509,10 @@
                 
   
   
-    
   
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-        
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Session 2: Follow-the-Sun Model
-  
-
-    
-  </span>
-  
-  
-
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../02-FOLLOW-THE-SUN-MODEL/" class="md-nav__link">
         
   
   
@@ -560,153 +528,6 @@
   
 
       </a>
-      
-        
-
-<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
-  
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#overview" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Overview
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#quick-steps" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Quick Steps
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Quick Steps">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#1-issue-detected" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        1. Issue Detected
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#2-investigate-and-document" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        2. Investigate and Document
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#3-handoff-preparation-30-min-before-shift-end" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        3. Handoff Preparation (30 min before shift end)
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#4-handoff-meeting-15-min-overlap" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        4. Handoff Meeting (15 min overlap)
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#5-incoming-team-takes-over" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        5. Incoming Team Takes Over
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#6-resolve-or-hand-off-again" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        6. Resolve or Hand Off Again
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#handoff-rules" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Handoff Rules
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#escalation-across-regions" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Escalation Across Regions
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#quick-reference" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Quick Reference
-      
-    </span>
-  </a>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
     </li>
   
 
@@ -835,8 +656,10 @@
       
   
   
+    
   
   
+  
     
     
       
@@ -850,21 +673,22 @@
     
     
       
+        
+        
+      
       
         
       
     
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
       
         
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" checked>
         
           
-        
-        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_4" >
-        
-          
-          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="">
             
   
   
@@ -882,7 +706,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_4">
             <span class="md-nav__icon md-icon"></span>
             
@@ -953,10 +777,37 @@
                 
   
   
+    
   
   
-    <li class="md-nav__item">
-      <a href="../09-INSIDE-SRE-ASK-AND-DISCUSS/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Session 9: Ask & Discuss (Sessions 7–8)
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         
   
   
@@ -972,6 +823,120 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#purpose" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Purpose
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#format" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Format
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#quick-recap-session-7-how-we-monitor-and-alert" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Quick Recap — Session 7: How We Monitor and Alert
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#quick-recap-session-8-how-we-handle-incidents" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Quick Recap — Session 8: How We Handle Incidents
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#discussion-prompts" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Discussion Prompts
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Discussion Prompts">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#monitoring-and-alerting-session-7" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Monitoring and Alerting (Session 7)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#incident-management-session-8" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Incident Management (Session 8)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#preview-sessions-1011" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Preview: Sessions 10–11
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -1011,10 +976,10 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#overview" class="md-nav__link">
+  <a href="#purpose" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Overview
+        Purpose
       
     </span>
   </a>
@@ -1022,22 +987,55 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#quick-steps" class="md-nav__link">
+  <a href="#format" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Quick Steps
+        Format
       
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="Quick Steps">
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#quick-recap-session-7-how-we-monitor-and-alert" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Quick Recap — Session 7: How We Monitor and Alert
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#quick-recap-session-8-how-we-handle-incidents" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Quick Recap — Session 8: How We Handle Incidents
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#discussion-prompts" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Discussion Prompts
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Discussion Prompts">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#1-issue-detected" class="md-nav__link">
+  <a href="#monitoring-and-alerting-session-7" class="md-nav__link">
     <span class="md-ellipsis">
       
-        1. Issue Detected
+        Monitoring and Alerting (Session 7)
       
     </span>
   </a>
@@ -1045,54 +1043,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#2-investigate-and-document" class="md-nav__link">
+  <a href="#incident-management-session-8" class="md-nav__link">
     <span class="md-ellipsis">
       
-        2. Investigate and Document
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#3-handoff-preparation-30-min-before-shift-end" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        3. Handoff Preparation (30 min before shift end)
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#4-handoff-meeting-15-min-overlap" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        4. Handoff Meeting (15 min overlap)
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#5-incoming-team-takes-over" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        5. Incoming Team Takes Over
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#6-resolve-or-hand-off-again" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        6. Resolve or Hand Off Again
+        Incident Management (Session 8)
       
     </span>
   </a>
@@ -1105,32 +1059,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#handoff-rules" class="md-nav__link">
+  <a href="#preview-sessions-1011" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Handoff Rules
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#escalation-across-regions" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Escalation Across Regions
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#quick-reference" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Quick Reference
+        Preview: Sessions 10–11
       
     </span>
   </a>
@@ -1157,164 +1089,92 @@
   
 
 
-<h1 id="session-2-follow-the-sun-fts-model-for-sre-environment">Session 2: Follow-the-Sun (FTS) Model for SRE Environment<a class="headerlink" href="#session-2-follow-the-sun-fts-model-for-sre-environment" title="Permanent link">⛓️</a></h1>
-<p><strong>Duration:</strong> 30 minutes
-<strong>Series:</strong> SRE Best Practices — How We Do Things (Session 2 of 14)</p>
+<h1 id="session-9-inside-sre-ask-discuss-anything">Session 9: Inside SRE — Ask &amp; Discuss Anything<a class="headerlink" href="#session-9-inside-sre-ask-discuss-anything" title="Permanent link">⛓️</a></h1>
+<p><strong>Duration:</strong> 30 minutes | <strong>Format:</strong> Open Q&amp;A and discussion
+<strong>Series:</strong> SRE Best Practices — How We Do Things (Session 9 of 14)
+<strong>Covers:</strong> Sessions 7–8 follow-up</p>
 <hr />
-<h2 id="overview">Overview<a class="headerlink" href="#overview" title="Permanent link">⛓️</a></h2>
-<p>Three regional SRE teams provide 24/7 coverage by handing off active investigations as the sun moves across time zones. No single team works overnight.</p>
-<div class="language-text highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>APAC (UTC+5:30 to +9)      EMEA (UTC+0 to +2)        NASA (UTC-5 to -8)
-</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>06:00–14:00 UTC             14:00–22:00 UTC            22:00–06:00 UTC
-</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-</span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>       │    Handoff 1    │       │    Handoff 2    │       │    Handoff 3
-</span><span id="__span-0-5"><a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>       └────────────────▶│       └────────────────▶│       └────────────▶
-</span></code></pre></div>
-<hr />
-<h2 id="quick-steps">Quick Steps<a class="headerlink" href="#quick-steps" title="Permanent link">⛓️</a></h2>
-<h3 id="1-issue-detected">1. Issue Detected<a class="headerlink" href="#1-issue-detected" title="Permanent link">⛓️</a></h3>
+<h2 id="purpose">Purpose<a class="headerlink" href="#purpose" title="Permanent link">⛓️</a></h2>
+<p>Open forum for the partner team to ask questions, discuss ideas, and share their own experiences related to topics covered in Sessions 7–8:</p>
 <ul>
-<li>Alert fires or user reports an issue</li>
-<li>ServiceNow/WebRCA incident created (auto or manual)</li>
-<li>Assigned to the <strong>currently active regional team</strong></li>
-</ul>
-<h3 id="2-investigate-and-document">2. Investigate and Document<a class="headerlink" href="#2-investigate-and-document" title="Permanent link">⛓️</a></h3>
-<ul>
-<li>Active team investigates following standard runbooks</li>
-<li><strong>All findings posted in the shared Teams/Slack investigation thread/channel</strong></li>
-<li>ServiceNow/WebRCA work notes updated every 30 min (Sev-1/2) or 2 hrs (Sev-3/4)</li>
-</ul>
-<h3 id="3-handoff-preparation-30-min-before-shift-end">3. Handoff Preparation (30 min before shift end)<a class="headerlink" href="#3-handoff-preparation-30-min-before-shift-end" title="Permanent link">⛓️</a></h3>
-<p>The outgoing team prepares a structured handoff note in the Teams/Slack thread/channel:</p>
-<div class="language-text highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>--- HANDOFF: [APAC → EMEA] — [Date, Time UTC] ---
-</span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>Incident:      SNOW-INC00412/ITN-2026-000010
-</span><span id="__span-1-3"><a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a>Severity:      Sev-2
-</span><span id="__span-1-4"><a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a>Cluster:       prod-spoke-01
-</span><span id="__span-1-5"><a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a>Status:        Investigating / Mitigated / Blocked
-</span><span id="__span-1-6"><a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a>
-</span><span id="__span-1-7"><a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a>Summary:       etcd leader elections every ~30s, traced to high disk I/O on master-2
-</span><span id="__span-1-8"><a id="__codelineno-1-8" name="__codelineno-1-8" href="#__codelineno-1-8"></a>What we tried: Checked etcd logs, confirmed leader churn, ruled out network
-</span><span id="__span-1-9"><a id="__codelineno-1-9" name="__codelineno-1-9" href="#__codelineno-1-9"></a>Current theory: Failing SSD on master-2
-</span><span id="__span-1-10"><a id="__codelineno-1-10" name="__codelineno-1-10" href="#__codelineno-1-10"></a>Next steps:    Run disk diagnostics, consider draining master-2
-</span><span id="__span-1-11"><a id="__codelineno-1-11" name="__codelineno-1-11" href="#__codelineno-1-11"></a>Blockers:      None / Waiting for [X]
-</span><span id="__span-1-12"><a id="__codelineno-1-12" name="__codelineno-1-12" href="#__codelineno-1-12"></a>Escalations:   Case #12345 open (awaiting response)
-</span><span id="__span-1-13"><a id="__codelineno-1-13" name="__codelineno-1-13" href="#__codelineno-1-13"></a>Contacts:      @JaneDoe available on Teams for 1 hr after handoff if needed
-</span></code></pre></div>
-<h3 id="4-handoff-meeting-15-min-overlap">4. Handoff Meeting (15 min overlap)<a class="headerlink" href="#4-handoff-meeting-15-min-overlap" title="Permanent link">⛓️</a></h3>
-<ul>
-<li><strong>Outgoing team</strong> briefs <strong>incoming team</strong> (live call or recorded async)</li>
-<li>Walk through every open incident using the handoff note</li>
-<li>Incoming team asks clarifying questions</li>
-<li>Incoming team <strong>acknowledges ownership</strong> in the Teams/Slack thread/channel</li>
-</ul>
-<h3 id="5-incoming-team-takes-over">5. Incoming Team Takes Over<a class="headerlink" href="#5-incoming-team-takes-over" title="Permanent link">⛓️</a></h3>
-<ul>
-<li>Update ServiceNow/WebRCA: reassign to incoming team / engineer</li>
-<li>Post acknowledgement in the investigation thread/channel:</li>
-</ul>
-<div class="language-text highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>--- ACKNOWLEDGED: EMEA taking over — [Date, Time UTC] ---
-</span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>Received handoff from APAC. Continuing investigation on INC00412/ITN-2026-000010.
-</span><span id="__span-2-3"><a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a>Next update in 30 min.
-</span></code></pre></div>
-<ul>
-<li>Continue investigation from where outgoing team left off</li>
-</ul>
-<h3 id="6-resolve-or-hand-off-again">6. Resolve or Hand Off Again<a class="headerlink" href="#6-resolve-or-hand-off-again" title="Permanent link">⛓️</a></h3>
-<ul>
-<li>If resolved: update ServiceNow/WebRCA → Resolved, post resolution in thread/channel, notify stakeholders</li>
-<li>If not resolved by shift end: repeat Steps 3–5 to next region</li>
+<li>Session 7: How We Monitor and Alert</li>
+<li>Session 8: How We Handle Incidents</li>
 </ul>
 <hr />
-<h2 id="handoff-rules">Handoff Rules<a class="headerlink" href="#handoff-rules" title="Permanent link">⛓️</a></h2>
+<h2 id="format">Format<a class="headerlink" href="#format" title="Permanent link">⛓️</a></h2>
 <table>
 <thead>
 <tr>
-<th>Rule</th>
-<th>Detail</th>
+<th>Time</th>
+<th>Activity</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td>Never drop an incident silently</td>
-<td>Every open incident must be explicitly handed off</td>
+<td>5 min</td>
+<td>Quick recap of Sessions 7–8 key points</td>
 </tr>
 <tr>
-<td>15-min overlap is mandatory</td>
-<td>Outgoing and incoming teams must have a live sync</td>
+<td>15 min</td>
+<td>Open Q&amp;A — anything from the previous sessions</td>
 </tr>
 <tr>
-<td>Handoff note is non-negotiable</td>
-<td>No verbal-only handoffs — it must be written in the thread/channel</td>
+<td>5 min</td>
+<td>Discussion — "How does your team handle this?"</td>
 </tr>
 <tr>
-<td>Outgoing team stays available 1 hr</td>
-<td>For follow-up questions after handoff</td>
-</tr>
-<tr>
-<td>Severity reassessment at each handoff</td>
-<td>Incoming team re-evaluates severity with fresh eyes</td>
-</tr>
-<tr>
-<td>Escalations carry forward</td>
-<td>Cases, management notifications — include in handoff</td>
+<td>5 min</td>
+<td>Action items and preview of Sessions 10–11</td>
 </tr>
 </tbody>
 </table>
 <hr />
-<h2 id="escalation-across-regions">Escalation Across Regions<a class="headerlink" href="#escalation-across-regions" title="Permanent link">⛓️</a></h2>
-<table>
-<thead>
-<tr>
-<th>Scenario</th>
-<th>Action</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Sev-1 during handoff</td>
-<td>Both teams stay until mitigated — handoff only after stabilization</td>
-</tr>
-<tr>
-<td>Sev-1 overnight (no active team available)</td>
-<td>Page the on-call engineer in the nearest active region</td>
-</tr>
-<tr>
-<td>Need SME from another region</td>
-<td>@mention in the thread/channel — they respond when their shift starts</td>
-</tr>
-<tr>
-<td>Case needs follow-up</td>
-<td>Include case number, last update, and expected response time in handoff</td>
-</tr>
-</tbody>
-</table>
+<h2 id="quick-recap-session-7-how-we-monitor-and-alert">Quick Recap — Session 7: How We Monitor and Alert<a class="headerlink" href="#quick-recap-session-7-how-we-monitor-and-alert" title="Permanent link">⛓️</a></h2>
+<ul>
+<li>Five-level severity model: critical, critical-FTS, high, medium, info — each with a defined response path</li>
+<li>Every alert requires two mandatory labels: <code>service</code> and <code>severity</code> — no exceptions</li>
+<li>SLO-based multi-window, multi-burn-rate alerting (14.4×, 6×, 3×, 1× thresholds)</li>
+<li>Alert routing: critical → PagerDuty, high → PagerDuty + Slack, medium/info → Slack only</li>
+<li>Dead Man's Snitch via the Watchdog alert — monitors the monitoring system itself</li>
+<li>89% runbook coverage across 2,700+ alerts; alert graduation pipeline (info → medium → high → critical)</li>
+<li>~80% alert noise reduction through inhibition rules, severity tuning, and the graduation pipeline</li>
+</ul>
+<h2 id="quick-recap-session-8-how-we-handle-incidents">Quick Recap — Session 8: How We Handle Incidents<a class="headerlink" href="#quick-recap-session-8-how-we-handle-incidents" title="Permanent link">⛓️</a></h2>
+<ul>
+<li>A PagerDuty alert is NOT an incident — most alerts resolve via runbook; incidents require coordination</li>
+<li>Four-phase lifecycle: Identify → Create → Resolve → Post-Incident</li>
+<li>Three roles: Tech Lead (technical lead), Incident Owner (customer perspective + post-incident accountability), Scribe (records everything)</li>
+<li>Severity check-ins: Sev1 every 20 min, Sev2 every 30 min, Sev3 every 60 min — non-negotiable</li>
+<li>Customer communication determined by impact scope (fleet-wide → status page; single cluster → service log)</li>
+<li>Structured handover: executive summary + 15-min verbal overlap + clean disengagement within 30 min</li>
+<li>Blameless PMR within 5 days for Sev1/2; corrective actions tracked and reviewed</li>
+</ul>
 <hr />
-<h2 id="quick-reference">Quick Reference<a class="headerlink" href="#quick-reference" title="Permanent link">⛓️</a></h2>
-<div class="language-text highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>ISSUE DETECTED
-</span><span id="__span-3-2"><a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a>     │
-</span><span id="__span-3-3"><a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a>     ▼
-</span><span id="__span-3-4"><a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a>ACTIVE TEAM INVESTIGATES
-</span><span id="__span-3-5"><a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a>(document everything in Teams/Slack thread/channel + ServiceNow/WebRCA)
-</span><span id="__span-3-6"><a id="__codelineno-3-6" name="__codelineno-3-6" href="#__codelineno-3-6"></a>     │
-</span><span id="__span-3-7"><a id="__codelineno-3-7" name="__codelineno-3-7" href="#__codelineno-3-7"></a>     ├── Resolved? ──▶ YES ──▶ Close incident, update thread
-</span><span id="__span-3-8"><a id="__codelineno-3-8" name="__codelineno-3-8" href="#__codelineno-3-8"></a>     │
-</span><span id="__span-3-9"><a id="__codelineno-3-9" name="__codelineno-3-9" href="#__codelineno-3-9"></a>     NO (shift ending)
-</span><span id="__span-3-10"><a id="__codelineno-3-10" name="__codelineno-3-10" href="#__codelineno-3-10"></a>     │
-</span><span id="__span-3-11"><a id="__codelineno-3-11" name="__codelineno-3-11" href="#__codelineno-3-11"></a>     ▼
-</span><span id="__span-3-12"><a id="__codelineno-3-12" name="__codelineno-3-12" href="#__codelineno-3-12"></a>PREPARE HANDOFF NOTE (30 min before shift end)
-</span><span id="__span-3-13"><a id="__codelineno-3-13" name="__codelineno-3-13" href="#__codelineno-3-13"></a>     │
-</span><span id="__span-3-14"><a id="__codelineno-3-14" name="__codelineno-3-14" href="#__codelineno-3-14"></a>     ▼
-</span><span id="__span-3-15"><a id="__codelineno-3-15" name="__codelineno-3-15" href="#__codelineno-3-15"></a>HANDOFF CALL (15 min overlap)
-</span><span id="__span-3-16"><a id="__codelineno-3-16" name="__codelineno-3-16" href="#__codelineno-3-16"></a>     │
-</span><span id="__span-3-17"><a id="__codelineno-3-17" name="__codelineno-3-17" href="#__codelineno-3-17"></a>     ▼
-</span><span id="__span-3-18"><a id="__codelineno-3-18" name="__codelineno-3-18" href="#__codelineno-3-18"></a>INCOMING TEAM ACKNOWLEDGES &amp; CONTINUES
-</span><span id="__span-3-19"><a id="__codelineno-3-19" name="__codelineno-3-19" href="#__codelineno-3-19"></a>     │
-</span><span id="__span-3-20"><a id="__codelineno-3-20" name="__codelineno-3-20" href="#__codelineno-3-20"></a>     ├── Resolved? ──▶ YES ──▶ Close incident, update thread
-</span><span id="__span-3-21"><a id="__codelineno-3-21" name="__codelineno-3-21" href="#__codelineno-3-21"></a>     │
-</span><span id="__span-3-22"><a id="__codelineno-3-22" name="__codelineno-3-22" href="#__codelineno-3-22"></a>     NO (shift ending)
-</span><span id="__span-3-23"><a id="__codelineno-3-23" name="__codelineno-3-23" href="#__codelineno-3-23"></a>     │
-</span><span id="__span-3-24"><a id="__codelineno-3-24" name="__codelineno-3-24" href="#__codelineno-3-24"></a>     ▼
-</span><span id="__span-3-25"><a id="__codelineno-3-25" name="__codelineno-3-25" href="#__codelineno-3-25"></a>REPEAT HANDOFF TO NEXT REGION
-</span></code></pre></div>
+<h2 id="discussion-prompts">Discussion Prompts<a class="headerlink" href="#discussion-prompts" title="Permanent link">⛓️</a></h2>
+<h3 id="monitoring-and-alerting-session-7">Monitoring and Alerting (Session 7)<a class="headerlink" href="#monitoring-and-alerting-session-7" title="Permanent link">⛓️</a></h3>
+<ul>
+<li>How many severity levels does your alerting model use? Do you have a defined response path for each?</li>
+<li>How many of your alerts have runbooks? What happens when someone gets paged without one?</li>
+<li>Do you use SLO-based burn-rate alerting, or raw threshold alerts?</li>
+<li>Do you have a dead man's switch for your monitoring stack? How do you know when monitoring itself is down?</li>
+<li>How often do you review and prune your alert rules? Do you have an alert graduation pipeline?</li>
+</ul>
+<h3 id="incident-management-session-8">Incident Management (Session 8)<a class="headerlink" href="#incident-management-session-8" title="Permanent link">⛓️</a></h3>
+<ul>
+<li>Do you distinguish between "alert" and "incident"? Where do you draw the line?</li>
+<li>How do you declare an incident? Is there a formal process, or is it ad-hoc?</li>
+<li>How many incident roles does your process define? How many actually get filled during a real incident?</li>
+<li>Do you have defined check-in intervals during incidents, or do updates happen when someone remembers?</li>
+<li>How do you hand off an incident across shifts or regions? Is it structured or informal?</li>
+<li>Do you run blameless post-mortem reviews? What happens with the corrective actions afterward?</li>
+<li>Does your team feel empowered to escalate early, or do engineers hesitate because they feel like they should solve it themselves?</li>
+</ul>
+<hr />
+<h2 id="preview-sessions-1011">Preview: Sessions 10–11<a class="headerlink" href="#preview-sessions-1011" title="Permanent link">⛓️</a></h2>
+<ul>
+<li><strong>Session 10: How We Measure Reliability</strong> — our actual SLIs (with PromQL), SLO targets and burn rates, error budget policy, decision-making with SLOs, and mistakes we've made.</li>
+<li><strong>Session 11: How We Manage Changes and Upgrades</strong> — change categorization, OCP upgrade process, pre/post-upgrade checklists, operator upgrades, rollback and recovery.</li>
+</ul>
 
 
 

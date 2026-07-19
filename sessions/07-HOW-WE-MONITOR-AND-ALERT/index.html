@@ -1,0 +1,2649 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="SRE knowledge transfer sessions for OpenShift Container Platform">
+      
+      
+        <meta name="author" content="Rohit Bhilare">
+      
+      
+      
+        <link rel="prev" href="../05-HOW-WE-OPERATE-OCP-CLUSTERS/">
+      
+      
+        <link rel="next" href="../08-HOW-WE-HANDLE-INCIDENTS/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
+    
+    
+      
+        <title>Session 7: How We Monitor and Alert - SRE Best Practices — How We Do Things</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.ec1eaa64.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Inter:300,300i,400,400i,700,700i%7CJetBrains+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Inter";--md-code-font:"JetBrains Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../stylesheets/extra.css">
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="deep-purple" data-md-color-accent="amber">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#session-7-how-we-monitor-and-alert" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow md-header--lifted" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="SRE Best Practices — How We Do Things" class="md-header__button md-logo" aria-label="SRE Best Practices — How We Do Things" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m10 17-4-4 1.41-1.41L10 14.17l6.59-6.59L18 9m-6-8L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            SRE Best Practices — How We Do Things
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Session 7: How We Monitor and Alert
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="deep-purple" data-md-color-accent="amber"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m17.75 4.09-2.53 1.94.91 3.06-2.63-1.81-2.63 1.81.91-3.06-2.53-1.94L12.44 4l1.06-3 1.06 3zm3.5 6.91-1.64 1.25.59 1.98-1.7-1.17-1.7 1.17.59-1.98L15.75 11l2.06-.05L18.5 9l.69 1.95zm-2.28 4.95c.83-.08 1.72 1.1 1.19 1.85-.32.45-.66.87-1.08 1.27C15.17 23 8.84 23 4.94 19.07c-3.91-3.9-3.91-10.24 0-14.14.4-.4.82-.76 1.27-1.08.75-.53 1.93.36 1.85 1.19-.27 2.86.69 5.83 2.89 8.02a9.96 9.96 0 0 0 8.02 2.89m-1.64 2.02a12.08 12.08 0 0 1-7.8-3.47c-2.17-2.19-3.33-5-3.49-7.82-2.81 3.14-2.7 7.96.31 10.98 3.02 3.01 7.84 3.12 10.98.31"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="deep-purple" data-md-color-accent="amber"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 7a5 5 0 0 1 5 5 5 5 0 0 1-5 5 5 5 0 0 1-5-5 5 5 0 0 1 5-5m0 2a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3m0-7 2.39 3.42C13.65 5.15 12.84 5 12 5s-1.65.15-2.39.42zM3.34 7l4.16-.35A7.2 7.2 0 0 0 5.94 8.5c-.44.74-.69 1.5-.83 2.29zm.02 10 1.76-3.77a7.131 7.131 0 0 0 2.38 4.14zM20.65 7l-1.77 3.79a7.02 7.02 0 0 0-2.38-4.15zm-.01 10-4.14.36c.59-.51 1.12-1.14 1.54-1.86.42-.73.69-1.5.83-2.29zM12 22l-2.41-3.44c.74.27 1.55.44 2.41.44.82 0 1.63-.17 2.37-.44z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+          <a href="javascript:void(0)" class="md-search__icon md-icon" title="Share" aria-label="Share" data-clipboard data-clipboard-text="" data-md-component="search-share" tabindex="-1">
+            
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7s-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9a3 3 0 0 0-3 3 3 3 0 0 0 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.15c-.05.21-.08.43-.08.66 0 1.61 1.31 2.91 2.92 2.91s2.92-1.3 2.92-2.91A2.92 2.92 0 0 0 18 16.08"/></svg>
+          </a>
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/rbhilare/sre-functions" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M173.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M252.8 8C114.1 8 8 113.3 8 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C436.2 457.8 504 362.9 504 252 504 113.3 391.5 8 252.8 8M105.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+  </div>
+  <div class="md-source__repository">
+    rbhilare/sre-functions
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+    
+      
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../.." class="md-tabs__link">
+        
+  
+  
+    
+  
+  Home
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../00-MASTER-SESSION-PLAN/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Session Plan
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../01-RELIABILITY-ACROSS-LAYERS/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Content Sessions
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../03-INSIDE-SRE-ASK-AND-DISCUSS/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Q&A Sessions
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+    
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="SRE Best Practices — How We Do Things" class="md-nav__button md-logo" aria-label="SRE Best Practices — How We Do Things" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m10 17-4-4 1.41-1.41L10 14.17l6.59-6.59L18 9m-6-8L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5z"/></svg>
+
+    </a>
+    SRE Best Practices — How We Do Things
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/rbhilare/sre-functions" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M173.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M252.8 8C114.1 8 8 113.3 8 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C436.2 457.8 504 362.9 504 252 504 113.3 391.5 8 252.8 8M105.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+  </div>
+  <div class="md-source__repository">
+    rbhilare/sre-functions
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Home
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../00-MASTER-SESSION-PLAN/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Session Plan
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Content Sessions
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Content Sessions
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../01-RELIABILITY-ACROSS-LAYERS/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Session 1: Reliability Across Layers
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../02-FOLLOW-THE-SUN-MODEL/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Session 2: Follow-the-Sun Model
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../04-HOW-WE-RUN-SRE/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Session 4: How We Run SRE
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../05-HOW-WE-OPERATE-OCP-CLUSTERS/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Session 5: How We Operate OCP Clusters
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Session 7: How We Monitor and Alert
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Session 7: How We Monitor and Alert
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#agenda" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Agenda
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#our-monitoring-stack-what-we-use" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Our Monitoring Stack — What We Use
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Our Monitoring Stack — What We Use">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#external-integrations" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        External Integrations
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#at-scale" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        At Scale
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#alert-severity-definitions-our-five-level-model" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Alert Severity Definitions — Our Five-Level Model
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Alert Severity Definitions — Our Five-Level Model">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#the-graduation-rule" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        The Graduation Rule
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#mandatory-alert-labels-the-two-labels-every-alert-must-have" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Mandatory Alert Labels — The Two Labels Every Alert Must Have
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Mandatory Alert Labels — The Two Labels Every Alert Must Have">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#standard-alert-annotations" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Standard Alert Annotations
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#our-alert-philosophy-everything-alerts-but-at-the-right-severity" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Our Alert Philosophy — Everything Alerts, But at the Right Severity
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Our Alert Philosophy — Everything Alerts, But at the Right Severity">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#what-we-learned-about-severity" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        What We Learned About Severity
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#inhibition-rules" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Inhibition Rules
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#alerts-we-removed-entirely" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Alerts We Removed Entirely
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#alert-routing-who-gets-paged-for-what" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Alert Routing — Who Gets Paged for What
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Alert Routing — Who Gets Paged for What">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#routing-by-severity" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Routing by Severity
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#alertmanager-routing-simplified" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Alertmanager Routing (Simplified)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#the-continue-true-pattern" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        The continue: true Pattern
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#slo-based-alerting-multi-window-multi-burn-rate" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        SLO-Based Alerting — Multi-Window, Multi-Burn-Rate
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="SLO-Based Alerting — Multi-Window, Multi-Burn-Rate">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#how-burn-rate-works" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        How Burn Rate Works
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#our-alerting-thresholds" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Our Alerting Thresholds
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#why-this-is-better-than-threshold-alerts" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Why This Is Better Than Threshold Alerts
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#monitoring-the-monitor-the-dead-mans-switch" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Monitoring the Monitor — The Dead Man's Switch
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Monitoring the Monitor — The Dead Man&#39;s Switch">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#the-problem" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        The Problem
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#how-it-works-watchdog-dead-mans-snitch" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        How It Works: Watchdog + Dead Man's Snitch
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#what-this-covers" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        What This Covers
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#automated-alert-investigation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Automated Alert Investigation
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Automated Alert Investigation">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#the-problem-we-solved" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        The Problem We Solved
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#how-it-works-now" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        How It Works Now
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#how-we-reduced-alert-noise" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        How We Reduced Alert Noise
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="How We Reduced Alert Noise">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#where-we-started" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Where We Started
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#what-we-did" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        What We Did
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#where-we-are-now" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Where We Are Now
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#alert-lifecycle-from-new-alert-to-production" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Alert Lifecycle — From New Alert to Production
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Alert Lifecycle — From New Alert to Production">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#before-adding-a-custom-alert" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Before Adding a Custom Alert
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#every-alert-must-have-a-runbook" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Every Alert Must Have a Runbook
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Every Alert Must Have a Runbook">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#the-rule" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        The Rule
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#what-a-runbook-contains" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        What a Runbook Contains
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#when-a-runbook-is-missing" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        When a Runbook Is Missing
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#key-takeaways-best-practices" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Key Takeaways / Best Practices
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../08-HOW-WE-HANDLE-INCIDENTS/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Session 8: How We Handle Incidents
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Q&A Sessions
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Q&A Sessions
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../03-INSIDE-SRE-ASK-AND-DISCUSS/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Session 3: Ask & Discuss (Sessions 1–2)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../06-INSIDE-SRE-ASK-AND-DISCUSS/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Session 6: Ask & Discuss (Sessions 4–5)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../09-INSIDE-SRE-ASK-AND-DISCUSS/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Session 9: Ask & Discuss (Sessions 7–8)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#agenda" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Agenda
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#our-monitoring-stack-what-we-use" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Our Monitoring Stack — What We Use
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Our Monitoring Stack — What We Use">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#external-integrations" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        External Integrations
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#at-scale" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        At Scale
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#alert-severity-definitions-our-five-level-model" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Alert Severity Definitions — Our Five-Level Model
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Alert Severity Definitions — Our Five-Level Model">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#the-graduation-rule" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        The Graduation Rule
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#mandatory-alert-labels-the-two-labels-every-alert-must-have" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Mandatory Alert Labels — The Two Labels Every Alert Must Have
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Mandatory Alert Labels — The Two Labels Every Alert Must Have">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#standard-alert-annotations" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Standard Alert Annotations
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#our-alert-philosophy-everything-alerts-but-at-the-right-severity" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Our Alert Philosophy — Everything Alerts, But at the Right Severity
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Our Alert Philosophy — Everything Alerts, But at the Right Severity">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#what-we-learned-about-severity" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        What We Learned About Severity
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#inhibition-rules" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Inhibition Rules
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#alerts-we-removed-entirely" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Alerts We Removed Entirely
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#alert-routing-who-gets-paged-for-what" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Alert Routing — Who Gets Paged for What
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Alert Routing — Who Gets Paged for What">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#routing-by-severity" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Routing by Severity
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#alertmanager-routing-simplified" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Alertmanager Routing (Simplified)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#the-continue-true-pattern" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        The continue: true Pattern
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#slo-based-alerting-multi-window-multi-burn-rate" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        SLO-Based Alerting — Multi-Window, Multi-Burn-Rate
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="SLO-Based Alerting — Multi-Window, Multi-Burn-Rate">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#how-burn-rate-works" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        How Burn Rate Works
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#our-alerting-thresholds" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Our Alerting Thresholds
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#why-this-is-better-than-threshold-alerts" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Why This Is Better Than Threshold Alerts
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#monitoring-the-monitor-the-dead-mans-switch" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Monitoring the Monitor — The Dead Man's Switch
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Monitoring the Monitor — The Dead Man&#39;s Switch">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#the-problem" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        The Problem
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#how-it-works-watchdog-dead-mans-snitch" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        How It Works: Watchdog + Dead Man's Snitch
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#what-this-covers" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        What This Covers
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#automated-alert-investigation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Automated Alert Investigation
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Automated Alert Investigation">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#the-problem-we-solved" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        The Problem We Solved
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#how-it-works-now" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        How It Works Now
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#how-we-reduced-alert-noise" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        How We Reduced Alert Noise
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="How We Reduced Alert Noise">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#where-we-started" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Where We Started
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#what-we-did" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        What We Did
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#where-we-are-now" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Where We Are Now
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#alert-lifecycle-from-new-alert-to-production" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Alert Lifecycle — From New Alert to Production
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Alert Lifecycle — From New Alert to Production">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#before-adding-a-custom-alert" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Before Adding a Custom Alert
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#every-alert-must-have-a-runbook" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Every Alert Must Have a Runbook
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Every Alert Must Have a Runbook">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#the-rule" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        The Rule
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#what-a-runbook-contains" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        What a Runbook Contains
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#when-a-runbook-is-missing" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        When a Runbook Is Missing
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#key-takeaways-best-practices" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Key Takeaways / Best Practices
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  
+  
+
+
+<h1 id="session-7-how-we-monitor-and-alert">Session 7: How We Monitor and Alert<a class="headerlink" href="#session-7-how-we-monitor-and-alert" title="Permanent link">⛓️</a></h1>
+<p><strong>Our Monitoring Stack, Alert Philosophy, and How We Eliminated Alert Fatigue</strong></p>
+<p><strong>Presenter:</strong> Rohit Bhilare — Principal Site Reliability Engineer, Hybrid Platforms — ROSA, Red Hat
+<strong>Duration:</strong> 30 minutes | <strong>Format:</strong> Peer conversation, not a lecture
+<strong>Series:</strong> SRE Best Practices — How We Do Things (Session 7 of 14)
+<strong>Focus:</strong> Monitoring architecture, alert severity model, routing, noise reduction, SLO-based alerting, runbook discipline, and alert lifecycle</p>
+<hr />
+<h2 id="agenda">Agenda<a class="headerlink" href="#agenda" title="Permanent link">⛓️</a></h2>
+<ul>
+<li>Our Monitoring Stack — What We Use</li>
+<li>Alert Severity Definitions — Our Five-Level Model</li>
+<li>Mandatory Alert Labels — The Two Labels Every Alert Must Have</li>
+<li>Our Alert Philosophy — Everything Alerts, But at the Right Severity</li>
+<li>Alert Routing — Who Gets Paged for What</li>
+<li>SLO-Based Alerting — Multi-Window, Multi-Burn-Rate</li>
+<li>Monitoring the Monitor — The Dead Man's Switch</li>
+<li>Automated Alert Investigation</li>
+<li>How We Reduced Alert Noise</li>
+<li>Alert Lifecycle — From New Alert to Production</li>
+<li>Every Alert Must Have a Runbook</li>
+<li>Key Takeaways / Best Practices</li>
+</ul>
+<hr />
+<h2 id="our-monitoring-stack-what-we-use">Our Monitoring Stack — What We Use<a class="headerlink" href="#our-monitoring-stack-what-we-use" title="Permanent link">⛓️</a></h2>
+<p>We rely on the <strong>OCP built-in monitoring stack</strong> — deliberately avoiding additional components that create maintenance overhead.</p>
+<table>
+<thead>
+<tr>
+<th>Component</th>
+<th>What It Does</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Prometheus</strong></td>
+<td>Collects and stores metrics from all cluster components</td>
+</tr>
+<tr>
+<td><strong>Alertmanager</strong></td>
+<td>Routes alerts based on severity and service labels to the right destination</td>
+</tr>
+<tr>
+<td><strong>OCP Console Dashboards</strong></td>
+<td>Built-in visualization for cluster health, node resources, etcd, API server</td>
+</tr>
+<tr>
+<td><strong>User Workload Monitoring</strong></td>
+<td>Application teams instrument their own services; we scrape via ServiceMonitor/PodMonitor</td>
+</tr>
+</tbody>
+</table>
+<h3 id="external-integrations">External Integrations<a class="headerlink" href="#external-integrations" title="Permanent link">⛓️</a></h3>
+<table>
+<thead>
+<tr>
+<th>Source</th>
+<th>Destination</th>
+<th>Purpose</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Alertmanager</td>
+<td><strong>PagerDuty</strong></td>
+<td>Pages on-call for critical alerts</td>
+</tr>
+<tr>
+<td>Alertmanager</td>
+<td><strong>Slack</strong></td>
+<td>Posts alert summaries to team channels in real time</td>
+</tr>
+<tr>
+<td>Alertmanager</td>
+<td><strong>Dead Man's Snitch</strong></td>
+<td>Heartbeat check — alerts us if the monitoring pipeline itself fails</td>
+</tr>
+<tr>
+<td>CI/CD pipelines</td>
+<td><strong>Slack</strong></td>
+<td>Pipeline failure notifications — team triages during working hours</td>
+</tr>
+</tbody>
+</table>
+<h3 id="at-scale">At Scale<a class="headerlink" href="#at-scale" title="Permanent link">⛓️</a></h3>
+<p>We manage <strong>2,700+ alert rules</strong> across <strong>450+ PrometheusRule files</strong>, with <strong>89% runbook coverage</strong> and <strong>86 SLO documents</strong> across services. This isn't a small-scale setup — it's a mature, battle-tested alerting platform.</p>
+<hr />
+<h2 id="alert-severity-definitions-our-five-level-model">Alert Severity Definitions — Our Five-Level Model<a class="headerlink" href="#alert-severity-definitions-our-five-level-model" title="Permanent link">⛓️</a></h2>
+<p>Every alert rule <strong>must</strong> have a severity label. We use a five-level severity model — each level has a defined escalation path and response expectation.</p>
+<table>
+<thead>
+<tr>
+<th>Severity</th>
+<th>Meaning</th>
+<th>Escalation</th>
+<th>Response Time</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Critical</strong></td>
+<td>Something is broken <strong>right now</strong> — customer experience is degraded or imminent</td>
+<td>Pages on-call via PagerDuty + posts to Slack</td>
+<td>Minutes</td>
+</tr>
+<tr>
+<td><strong>Critical-FTS</strong></td>
+<td>Same as critical, but only during business hours (Follow-the-Sun)</td>
+<td>PagerDuty FTS policy only — no off-hours page</td>
+<td>During working hours</td>
+</tr>
+<tr>
+<td><strong>High</strong></td>
+<td>Needs attention from both the service team and SRE</td>
+<td>Posts to team Slack channel + SRE Slack channel</td>
+<td>Same day — both teams aware</td>
+</tr>
+<tr>
+<td><strong>Medium</strong></td>
+<td>Service team can handle independently — SRE doesn't need to act</td>
+<td>Posts to team Slack channel only</td>
+<td>Same day — team triages</td>
+</tr>
+<tr>
+<td><strong>Info</strong></td>
+<td>Informational — useful context, no action expected</td>
+<td>Slack notification (recommend a separate channel to avoid noise)</td>
+<td>Best effort</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p><strong>The key question for every alert:</strong> "How fast must someone act, and who needs to act?" That determines severity.</p>
+</blockquote>
+<h3 id="the-graduation-rule">The Graduation Rule<a class="headerlink" href="#the-graduation-rule" title="Permanent link">⛓️</a></h3>
+<p>All newly added alerts <strong>start at <code>info</code> severity</strong> unless an exception is approved during review. This allows us to observe behavior in practice, validate thresholds, and build confidence before promoting to higher severity.</p>
+<hr />
+<h2 id="mandatory-alert-labels-the-two-labels-every-alert-must-have">Mandatory Alert Labels — The Two Labels Every Alert Must Have<a class="headerlink" href="#mandatory-alert-labels-the-two-labels-every-alert-must-have" title="Permanent link">⛓️</a></h2>
+<p>Every alert rule in our system requires exactly two labels:</p>
+<table>
+<thead>
+<tr>
+<th>Label</th>
+<th>Purpose</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong><code>service</code></strong></td>
+<td>Identifies which service owns the alert — drives routing to the correct team channel</td>
+</tr>
+<tr>
+<td><strong><code>severity</code></strong></td>
+<td>Determines escalation path — PagerDuty, Slack, or both (see severity table above)</td>
+</tr>
+</tbody>
+</table>
+<p>Without both labels, an alert cannot be routed correctly. This is enforced during code review.</p>
+<h3 id="standard-alert-annotations">Standard Alert Annotations<a class="headerlink" href="#standard-alert-annotations" title="Permanent link">⛓️</a></h3>
+<p>Beyond labels, every alert should include these annotations:</p>
+<table>
+<thead>
+<tr>
+<th>Annotation</th>
+<th>Purpose</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong><code>message</code></strong></td>
+<td>Human-readable description shown in Slack/PagerDuty</td>
+</tr>
+<tr>
+<td><strong><code>runbook</code></strong></td>
+<td>Link to the standard operating procedure for this alert</td>
+</tr>
+<tr>
+<td><strong><code>dashboard</code></strong></td>
+<td>Link to the relevant Grafana dashboard (pre-selected variables preferred)</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="our-alert-philosophy-everything-alerts-but-at-the-right-severity">Our Alert Philosophy — Everything Alerts, But at the Right Severity<a class="headerlink" href="#our-alert-philosophy-everything-alerts-but-at-the-right-severity" title="Permanent link">⛓️</a></h2>
+<blockquote>
+<p>"Every alert must be actionable. The difference is how urgently someone needs to act."</p>
+</blockquote>
+<p>We alert on all of the conditions below — nothing is "just a dashboard." The distinction is <strong>severity and response time</strong>, not whether we alert at all.</p>
+<table>
+<thead>
+<tr>
+<th>Condition</th>
+<th>Severity</th>
+<th>Response Expectation</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>API server errors &gt; 1% for 5 min</td>
+<td><strong>Critical</strong></td>
+<td>Immediate — on-call investigates within minutes</td>
+</tr>
+<tr>
+<td>API server latency trending up</td>
+<td><strong>High</strong></td>
+<td>Same day — both SRE and service team investigate</td>
+</tr>
+<tr>
+<td>etcd no leader</td>
+<td><strong>Critical</strong></td>
+<td>Immediate — control plane is at risk</td>
+</tr>
+<tr>
+<td>etcd db size growing</td>
+<td><strong>High</strong></td>
+<td>Same day — both teams plan compaction or remediation</td>
+</tr>
+<tr>
+<td>Multiple nodes NotReady</td>
+<td><strong>Critical</strong></td>
+<td>Immediate — workloads are impacted</td>
+</tr>
+<tr>
+<td>Single node high CPU</td>
+<td><strong>High</strong></td>
+<td>Same day — both teams check workload distribution, consider scaling</td>
+</tr>
+<tr>
+<td>MachineConfigPool degraded</td>
+<td><strong>Critical</strong></td>
+<td>Immediate — node configuration drift</td>
+</tr>
+<tr>
+<td>MachineConfigPool progressing</td>
+<td><strong>Info</strong></td>
+<td>Awareness — expected during upgrades, investigate if unexpected</td>
+</tr>
+<tr>
+<td>Certificate expiring &lt; 7 days</td>
+<td><strong>Critical</strong></td>
+<td>Immediate — services will break</td>
+</tr>
+<tr>
+<td>Certificate expiring &lt; 30 days</td>
+<td><strong>High</strong></td>
+<td>This week — both teams aware, plan rotation</td>
+</tr>
+<tr>
+<td>Storage backend in critical state</td>
+<td><strong>Critical</strong></td>
+<td>Immediate — data at risk</td>
+</tr>
+<tr>
+<td>Storage health warning</td>
+<td><strong>High</strong></td>
+<td>Same day — both teams investigate capacity and OSD health</td>
+</tr>
+<tr>
+<td>SLO burn rate 14.4× (2% budget in 1 hour)</td>
+<td><strong>Critical</strong></td>
+<td>Immediate — error budget exhausting rapidly</td>
+</tr>
+<tr>
+<td>SLO burn rate 6× (5% budget in 6 hours)</td>
+<td><strong>Critical</strong></td>
+<td>Immediate — sustained error budget burn</td>
+</tr>
+<tr>
+<td>SLO burn rate 1× (10% budget in 3 days)</td>
+<td><strong>High</strong></td>
+<td>Same day — error rate not dropping, both teams investigate</td>
+</tr>
+</tbody>
+</table>
+<h3 id="what-we-learned-about-severity">What We Learned About Severity<a class="headerlink" href="#what-we-learned-about-severity" title="Permanent link">⛓️</a></h3>
+<ul>
+<li><strong>Critical is reserved for "act now or things break."</strong> Must relate to a degraded customer experience that's imminent or already ongoing.</li>
+<li><strong>Critical-FTS is for business-hours-only paging.</strong> Same urgency, but doesn't wake anyone up at 3 AM.</li>
+<li><strong>High means both teams need to be in the loop.</strong> The service team acts, SRE stays aware for potential escalation.</li>
+<li><strong>Medium is the service team's responsibility.</strong> SRE doesn't act on these unless the team reaches out.</li>
+<li><strong>Info is context.</strong> Useful during troubleshooting, but not worth interrupting anyone.</li>
+</ul>
+<h3 id="inhibition-rules">Inhibition Rules<a class="headerlink" href="#inhibition-rules" title="Permanent link">⛓️</a></h3>
+<p>When a <strong>critical</strong> alert fires, matching <strong>medium</strong> alerts with the same <code>alertname</code>, <code>cluster</code>, and <code>service</code> are automatically suppressed. This prevents lower-severity noise from piling up during a major incident.</p>
+<div class="language-yaml highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="nt">inhibit_rules</span><span class="p">:</span>
+</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">source_match</span><span class="p">:</span>
+</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="w">      </span><span class="nt">severity</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;critical&#39;</span>
+</span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="w">    </span><span class="nt">target_match</span><span class="p">:</span>
+</span><span id="__span-0-5"><a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a><span class="w">      </span><span class="nt">severity</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;medium&#39;</span>
+</span><span id="__span-0-6"><a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a><span class="w">    </span><span class="nt">equal</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">&#39;alertname&#39;</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">&#39;cluster&#39;</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">&#39;service&#39;</span><span class="p p-Indicator">]</span>
+</span></code></pre></div>
+<h3 id="alerts-we-removed-entirely">Alerts We Removed Entirely<a class="headerlink" href="#alerts-we-removed-entirely" title="Permanent link">⛓️</a></h3>
+<ul>
+<li><strong>Pod restart alerts</strong> — too noisy; most pod restarts are self-healing and expected</li>
+<li><strong>Disk usage warnings at 70%</strong> — fires too early, creates noise weeks before any action is needed; we alert at 85% instead</li>
+<li><strong>Individual pod OOMKilled</strong> — this is an application-level concern; app teams own their resource requests and limits</li>
+<li><strong>RDS burst balance predictions</strong> — routed to Jira instead; not actionable as a Slack alert</li>
+</ul>
+<hr />
+<h2 id="alert-routing-who-gets-paged-for-what">Alert Routing — Who Gets Paged for What<a class="headerlink" href="#alert-routing-who-gets-paged-for-what" title="Permanent link">⛓️</a></h2>
+<p>We use <strong>PagerDuty</strong> for paging and <strong>Slack</strong> for team-level notifications. Alertmanager routes all cluster alerts based on the <code>service</code> and <code>severity</code> labels.</p>
+<p>For <strong>CI/CD pipeline failures</strong>, we use <strong>Slack notifications</strong> — these are not PagerDuty events. Pipeline failures post directly to the relevant Slack channel.</p>
+<h3 id="routing-by-severity">Routing by Severity<a class="headerlink" href="#routing-by-severity" title="Permanent link">⛓️</a></h3>
+<table>
+<thead>
+<tr>
+<th>Severity</th>
+<th>PagerDuty</th>
+<th>Slack</th>
+<th>Response</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Critical</strong></td>
+<td>Pages on-call immediately</td>
+<td>Posted to team channel + SRE channel</td>
+<td>Immediate</td>
+</tr>
+<tr>
+<td><strong>Critical-FTS</strong></td>
+<td>Pages FTS on-call only (business hours)</td>
+<td>Posted to team channel + SRE channel</td>
+<td>During working hours</td>
+</tr>
+<tr>
+<td><strong>High</strong></td>
+<td>No page</td>
+<td>Posted to team channel + SRE channel</td>
+<td>Same day — both teams aware</td>
+</tr>
+<tr>
+<td><strong>Medium</strong></td>
+<td>No page</td>
+<td>Posted to team channel only</td>
+<td>Same day — team triages</td>
+</tr>
+<tr>
+<td><strong>Info</strong></td>
+<td>No page</td>
+<td>Team channel (separate channel recommended)</td>
+<td>Best effort</td>
+</tr>
+<tr>
+<td><strong>Deadman</strong></td>
+<td>Via Dead Man's Snitch</td>
+<td>N/A</td>
+<td>Automatic — see DMS section</td>
+</tr>
+</tbody>
+</table>
+<h3 id="alertmanager-routing-simplified">Alertmanager Routing (Simplified)<a class="headerlink" href="#alertmanager-routing-simplified" title="Permanent link">⛓️</a></h3>
+<p>Alerts route based on <code>service</code> label first (to the correct team), then <code>severity</code> (to the correct escalation path).</p>
+<div class="language-yaml highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="nt">route</span><span class="p">:</span>
+</span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="w">  </span><span class="nt">receiver</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">default-slack-alerts</span>
+</span><span id="__span-1-3"><a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="w">  </span><span class="nt">group_by</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">&#39;job&#39;</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">&#39;cluster&#39;</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">&#39;service&#39;</span><span class="p p-Indicator">]</span>
+</span><span id="__span-1-4"><a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a><span class="w">  </span><span class="nt">group_wait</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">30s</span>
+</span><span id="__span-1-5"><a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a><span class="w">  </span><span class="nt">group_interval</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">5m</span>
+</span><span id="__span-1-6"><a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a><span class="w">  </span><span class="nt">repeat_interval</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">24h</span>
+</span><span id="__span-1-7"><a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a><span class="w">  </span><span class="nt">routes</span><span class="p">:</span>
+</span><span id="__span-1-8"><a id="__codelineno-1-8" name="__codelineno-1-8" href="#__codelineno-1-8"></a><span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">match</span><span class="p">:</span>
+</span><span id="__span-1-9"><a id="__codelineno-1-9" name="__codelineno-1-9" href="#__codelineno-1-9"></a><span class="w">        </span><span class="nt">severity</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">critical</span>
+</span><span id="__span-1-10"><a id="__codelineno-1-10" name="__codelineno-1-10" href="#__codelineno-1-10"></a><span class="w">      </span><span class="nt">receiver</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">pagerduty-sre</span>
+</span><span id="__span-1-11"><a id="__codelineno-1-11" name="__codelineno-1-11" href="#__codelineno-1-11"></a><span class="w">      </span><span class="nt">continue</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+</span><span id="__span-1-12"><a id="__codelineno-1-12" name="__codelineno-1-12" href="#__codelineno-1-12"></a><span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">match</span><span class="p">:</span>
+</span><span id="__span-1-13"><a id="__codelineno-1-13" name="__codelineno-1-13" href="#__codelineno-1-13"></a><span class="w">        </span><span class="nt">severity</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">critical-fts</span>
+</span><span id="__span-1-14"><a id="__codelineno-1-14" name="__codelineno-1-14" href="#__codelineno-1-14"></a><span class="w">      </span><span class="nt">receiver</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">pagerduty-sre-fts-only</span>
+</span><span id="__span-1-15"><a id="__codelineno-1-15" name="__codelineno-1-15" href="#__codelineno-1-15"></a><span class="w">      </span><span class="nt">continue</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+</span><span id="__span-1-16"><a id="__codelineno-1-16" name="__codelineno-1-16" href="#__codelineno-1-16"></a><span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">match_re</span><span class="p">:</span>
+</span><span id="__span-1-17"><a id="__codelineno-1-17" name="__codelineno-1-17" href="#__codelineno-1-17"></a><span class="w">        </span><span class="nt">severity</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">^(critical|critical-fts|high)$</span>
+</span><span id="__span-1-18"><a id="__codelineno-1-18" name="__codelineno-1-18" href="#__codelineno-1-18"></a><span class="w">      </span><span class="nt">receiver</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">slack-sre-alerts</span>
+</span><span id="__span-1-19"><a id="__codelineno-1-19" name="__codelineno-1-19" href="#__codelineno-1-19"></a><span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">match</span><span class="p">:</span>
+</span><span id="__span-1-20"><a id="__codelineno-1-20" name="__codelineno-1-20" href="#__codelineno-1-20"></a><span class="w">        </span><span class="nt">severity</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">deadman</span>
+</span><span id="__span-1-21"><a id="__codelineno-1-21" name="__codelineno-1-21" href="#__codelineno-1-21"></a><span class="w">      </span><span class="nt">receiver</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">deadmanssnitch</span>
+</span><span id="__span-1-22"><a id="__codelineno-1-22" name="__codelineno-1-22" href="#__codelineno-1-22"></a><span class="w">      </span><span class="nt">group_wait</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">30s</span>
+</span><span id="__span-1-23"><a id="__codelineno-1-23" name="__codelineno-1-23" href="#__codelineno-1-23"></a><span class="w">      </span><span class="nt">group_interval</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1m</span>
+</span><span id="__span-1-24"><a id="__codelineno-1-24" name="__codelineno-1-24" href="#__codelineno-1-24"></a><span class="w">      </span><span class="nt">repeat_interval</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1m</span>
+</span></code></pre></div>
+<h3 id="the-continue-true-pattern">The <code>continue: true</code> Pattern<a class="headerlink" href="#the-continue-true-pattern" title="Permanent link">⛓️</a></h3>
+<p>Critical alerts use <code>continue: true</code> — this means they match the PagerDuty route <strong>and</strong> continue to the Slack route. The on-call gets paged, and the team sees it in Slack simultaneously.</p>
+<hr />
+<h2 id="slo-based-alerting-multi-window-multi-burn-rate">SLO-Based Alerting — Multi-Window, Multi-Burn-Rate<a class="headerlink" href="#slo-based-alerting-multi-window-multi-burn-rate" title="Permanent link">⛓️</a></h2>
+<p>Instead of alerting on raw thresholds ("error rate &gt; 5%"), we alert on <strong>how fast we're burning through our error budget</strong>. This approach comes from the Google SRE Workbook and gives us precise, low-noise alerts tied directly to our SLO commitments.</p>
+<h3 id="how-burn-rate-works">How Burn Rate Works<a class="headerlink" href="#how-burn-rate-works" title="Permanent link">⛓️</a></h3>
+<p>If your SLO is 99% availability over 30 days, your error budget is 1%. The <strong>burn rate</strong> measures how fast you're consuming that budget:</p>
+<table>
+<thead>
+<tr>
+<th>Burn Rate</th>
+<th>Meaning</th>
+<th>Budget Exhausted In</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>1×</strong></td>
+<td>Consuming at expected rate</td>
+<td>30 days (full window)</td>
+</tr>
+<tr>
+<td><strong>6×</strong></td>
+<td>6× faster than expected</td>
+<td>5 days</td>
+</tr>
+<tr>
+<td><strong>14.4×</strong></td>
+<td>Extremely fast burn</td>
+<td>~2 days</td>
+</tr>
+</tbody>
+</table>
+<h3 id="our-alerting-thresholds">Our Alerting Thresholds<a class="headerlink" href="#our-alerting-thresholds" title="Permanent link">⛓️</a></h3>
+<p>We use multi-window, multi-burn-rate alerts — a short window confirms the issue is still active, a long window confirms the trend:</p>
+<table>
+<thead>
+<tr>
+<th>Long Window</th>
+<th>Short Window (1/12th)</th>
+<th>Burn Rate</th>
+<th>Severity</th>
+<th>What It Means</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>1 hour</strong></td>
+<td><strong>5 minutes</strong></td>
+<td><strong>14.4×</strong></td>
+<td>Critical</td>
+<td>2% of error budget consumed in 1 hour — page immediately</td>
+</tr>
+<tr>
+<td><strong>6 hours</strong></td>
+<td><strong>30 minutes</strong></td>
+<td><strong>6×</strong></td>
+<td>Critical</td>
+<td>5% of error budget consumed in 6 hours — page immediately</td>
+</tr>
+<tr>
+<td><strong>3 days</strong></td>
+<td><strong>6 hours</strong></td>
+<td><strong>1×</strong></td>
+<td>Medium</td>
+<td>10% of error budget consumed in 3 days — investigate, don't page</td>
+</tr>
+</tbody>
+</table>
+<h3 id="why-this-is-better-than-threshold-alerts">Why This Is Better Than Threshold Alerts<a class="headerlink" href="#why-this-is-better-than-threshold-alerts" title="Permanent link">⛓️</a></h3>
+<ul>
+<li><strong>Threshold alert:</strong> "Error rate &gt; 5% for 5 min" — fires regardless of whether the SLO is actually at risk</li>
+<li><strong>Burn-rate alert:</strong> "Consuming 14.4× error budget over 1 hour" — only fires when the SLO is genuinely threatened</li>
+</ul>
+<blockquote>
+<p><strong>We maintain 86 SLO documents across services</strong>, each defining availability and/or latency objectives. Many generate burn-rate alerts automatically using recording rules.</p>
+</blockquote>
+<hr />
+<h2 id="monitoring-the-monitor-the-dead-mans-switch">Monitoring the Monitor — The Dead Man's Switch<a class="headerlink" href="#monitoring-the-monitor-the-dead-mans-switch" title="Permanent link">⛓️</a></h2>
+<h3 id="the-problem">The Problem<a class="headerlink" href="#the-problem" title="Permanent link">⛓️</a></h3>
+<p>If Prometheus or Alertmanager goes down, there is nothing inside the cluster to alert on that failure. Worst case — an entire cluster goes down and PagerDuty is never notified. Silence looks the same as "everything is fine."</p>
+<h3 id="how-it-works-watchdog-dead-mans-snitch">How It Works: Watchdog + Dead Man's Snitch<a class="headerlink" href="#how-it-works-watchdog-dead-mans-snitch" title="Permanent link">⛓️</a></h3>
+<p>OCP ships a built-in alert called <strong>Watchdog</strong> that fires continuously — it's always active. We route this alert from Alertmanager to <strong>Dead Man's Snitch</strong> (a PagerDuty integration) with a short repeat interval.</p>
+<p>Dead Man's Snitch expects check-ins from each cluster. If it stops receiving the Watchdog alert, it creates a PagerDuty incident automatically.</p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>Watchdog alert (always firing) → Alertmanager → [sends every 1 min] → Dead Man&#39;s Snitch
+</span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>                                                                          ↓
+</span><span id="__span-2-3"><a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a>                                                             If check-in stops → PagerDuty incident
+</span></code></pre></div>
+<p>The Alertmanager route for Dead Man's Snitch uses <code>repeat_interval: 1m</code> and <code>group_interval: 1m</code> — much shorter than normal alerts — so any disruption is detected quickly.</p>
+<h3 id="what-this-covers">What This Covers<a class="headerlink" href="#what-this-covers" title="Permanent link">⛓️</a></h3>
+<ul>
+<li><strong>Prometheus goes down</strong> — Watchdog stops firing → DMS pages us</li>
+<li><strong>Alertmanager goes down</strong> — Watchdog can't be sent → DMS pages us</li>
+<li><strong>Entire cluster goes down</strong> — everything stops → DMS pages us</li>
+<li><strong>Network partition</strong> — Alertmanager can't reach DMS → DMS pages us</li>
+</ul>
+<p>A unique Dead Man's Snitch is configured per cluster, so we know exactly which cluster went silent.</p>
+<blockquote>
+<p><strong>This closes the blind spot:</strong> in-cluster monitoring can't alert on its own failure. An external dead man's switch can.</p>
+</blockquote>
+<hr />
+<h2 id="automated-alert-investigation">Automated Alert Investigation<a class="headerlink" href="#automated-alert-investigation" title="Permanent link">⛓️</a></h2>
+<h3 id="the-problem-we-solved">The Problem We Solved<a class="headerlink" href="#the-problem-we-solved" title="Permanent link">⛓️</a></h3>
+<p>Before automation, every alert required a human to log in, gather context, and start investigating — even for well-known patterns with documented resolutions.</p>
+<h3 id="how-it-works-now">How It Works Now<a class="headerlink" href="#how-it-works-now" title="Permanent link">⛓️</a></h3>
+<p>We have an <strong>automation layer</strong> between PagerDuty and the SRE on-call. When certain alerts fire, the automation:</p>
+<ol>
+<li>Receives the PagerDuty webhook</li>
+<li>Runs automated investigation checks on the cluster</li>
+<li>Posts investigation notes directly to the PagerDuty incident</li>
+<li>If the cause is a known pattern (e.g., customer misconfiguration), it can auto-resolve or place the cluster in limited support</li>
+</ol>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>Alert fires → PagerDuty → Automation layer → Investigation runs → Notes posted to incident
+</span><span id="__span-3-2"><a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a>                                                                    ↓
+</span><span id="__span-3-3"><a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a>                                                            SRE gets a pre-investigated alert
+</span></code></pre></div>
+<table>
+<thead>
+<tr>
+<th>What Automation Handles</th>
+<th>What SRE Handles</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Cluster gone missing — check cloud provider status</td>
+<td>Complex multi-component failures</td>
+</tr>
+<tr>
+<td>Provisioning failure — gather install logs</td>
+<td>Escalations requiring engineering</td>
+</tr>
+<tr>
+<td>Known customer misconfigurations</td>
+<td>Novel or undocumented alert patterns</td>
+</tr>
+<tr>
+<td>Triggering must-gather for diagnostics</td>
+<td>Incidents requiring customer communication</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p><strong>Result:</strong> The on-call engineer receives alerts that are already partially investigated. For many common patterns, the automation resolves the issue before a human needs to look.</p>
+</blockquote>
+<hr />
+<h2 id="how-we-reduced-alert-noise">How We Reduced Alert Noise<a class="headerlink" href="#how-we-reduced-alert-noise" title="Permanent link">⛓️</a></h2>
+<h3 id="where-we-started">Where We Started<a class="headerlink" href="#where-we-started" title="Permanent link">⛓️</a></h3>
+<ul>
+<li>Hundreds of active alert rules across our fleet</li>
+<li>Dozens of pages per week to the on-call engineer</li>
+<li>Low alert-to-action ratio — most alerts required no action</li>
+<li>On-call rotation was dreaded; team was burning out</li>
+</ul>
+<h3 id="what-we-did">What We Did<a class="headerlink" href="#what-we-did" title="Permanent link">⛓️</a></h3>
+<table>
+<thead>
+<tr>
+<th>Step</th>
+<th>Action</th>
+<th>Impact</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>1. Audit</strong></td>
+<td>Reviewed every alert: "Can someone act RIGHT NOW?" If no → delete or downgrade severity</td>
+<td>Cut alert count significantly</td>
+</tr>
+<tr>
+<td><strong>2. Runbook requirement</strong></td>
+<td>Every remaining alert MUST link to a runbook. No runbook = delete the alert</td>
+<td>Forced clarity on what each alert means</td>
+</tr>
+<tr>
+<td><strong>3. Ownership boundaries</strong></td>
+<td>Platform alerts → SRE. Application alerts → app teams. We stopped carrying alerts for things we couldn't fix</td>
+<td>Reduced noise from alerts we couldn't act on</td>
+</tr>
+<tr>
+<td><strong>4. Five-level severity model</strong></td>
+<td>Moved from 2-3 severity levels to five, each with a defined escalation path and response expectation</td>
+<td>Right-sized the response to every alert</td>
+</tr>
+<tr>
+<td><strong>5. Inhibition rules</strong></td>
+<td>Critical suppresses matching medium alerts — less noise during incidents</td>
+<td>Prevented alert pileup during outages</td>
+</tr>
+<tr>
+<td><strong>6. Quarterly review</strong></td>
+<td>"Alert gardening" session every quarter — review what fired, what was actionable, what to prune</td>
+<td>Prevents alert sprawl from growing back</td>
+</tr>
+</tbody>
+</table>
+<h3 id="where-we-are-now">Where We Are Now<a class="headerlink" href="#where-we-are-now" title="Permanent link">⛓️</a></h3>
+<ul>
+<li>Alert-to-action ratio significantly improved — most alerts require real action</li>
+<li>On-call is sustainable; engineers no longer dread the rotation</li>
+<li>Pages per week dropped by ~80%</li>
+</ul>
+<hr />
+<h2 id="alert-lifecycle-from-new-alert-to-production">Alert Lifecycle — From New Alert to Production<a class="headerlink" href="#alert-lifecycle-from-new-alert-to-production" title="Permanent link">⛓️</a></h2>
+<p>New alerts don't go straight to critical. We use an <strong>alert graduation pipeline</strong>:</p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>info → medium → high → critical
+</span></code></pre></div>
+<table>
+<thead>
+<tr>
+<th>Stage</th>
+<th>What Happens</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Info</strong></td>
+<td>Alert fires and posts to the team's channel. We observe how often it fires and whether it correlates with real issues</td>
+</tr>
+<tr>
+<td><strong>Medium</strong></td>
+<td>Alert creates a Slack notification to the service team. We validate that the runbook is accurate and the alert is actionable</td>
+</tr>
+<tr>
+<td><strong>High</strong></td>
+<td>Alert notifies both the service team and SRE. Both teams validate the escalation path and response</td>
+</tr>
+<tr>
+<td><strong>Critical</strong></td>
+<td>Alert pages on-call. Only promoted after we've confirmed the alert is reliable, actionable, and has a tested runbook</td>
+</tr>
+</tbody>
+</table>
+<p>For SLO burn-rate alerts specifically, we use a <strong>soaking PagerDuty service</strong> — new burn-rate alerts route to a silent PD service first. If they fire correctly and correlate with real incidents, we promote them to the production PD service.</p>
+<h3 id="before-adding-a-custom-alert">Before Adding a Custom Alert<a class="headerlink" href="#before-adding-a-custom-alert" title="Permanent link">⛓️</a></h3>
+<p>We ask these questions:</p>
+<ol>
+<li><strong>Can this alert be contributed upstream to OCP?</strong> (Preferred — the community maintains it)</li>
+<li><strong>Does this alert overlap with an existing OCP alert?</strong> (Don't duplicate)</li>
+<li><strong>Can we write a runbook for it?</strong> (If not, the alert isn't actionable)</li>
+<li><strong>Should this alert block cluster upgrades?</strong> (Very few should)</li>
+</ol>
+<blockquote>
+<p><strong>Our goal:</strong> Minimize custom alerts we maintain. Every custom alert is technical debt.</p>
+</blockquote>
+<hr />
+<h2 id="every-alert-must-have-a-runbook">Every Alert Must Have a Runbook<a class="headerlink" href="#every-alert-must-have-a-runbook" title="Permanent link">⛓️</a></h2>
+<h3 id="the-rule">The Rule<a class="headerlink" href="#the-rule" title="Permanent link">⛓️</a></h3>
+<p>No alert goes to production without a corresponding runbook (SOP). Across our fleet, <strong>89% of our 2,700+ alerts</strong> link to a runbook — and we're actively closing the remaining gap.</p>
+<h3 id="what-a-runbook-contains">What a Runbook Contains<a class="headerlink" href="#what-a-runbook-contains" title="Permanent link">⛓️</a></h3>
+<table>
+<thead>
+<tr>
+<th>Section</th>
+<th>Content</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Alert description</strong></td>
+<td>What the alert means, what metric it monitors</td>
+</tr>
+<tr>
+<td><strong>Impact</strong></td>
+<td>What breaks if this is not addressed</td>
+</tr>
+<tr>
+<td><strong>Investigation steps</strong></td>
+<td>Specific commands and checks to diagnose the issue</td>
+</tr>
+<tr>
+<td><strong>Remediation</strong></td>
+<td>Step-by-step resolution</td>
+</tr>
+<tr>
+<td><strong>Escalation</strong></td>
+<td>When to escalate and to whom</td>
+</tr>
+</tbody>
+</table>
+<h3 id="when-a-runbook-is-missing">When a Runbook Is Missing<a class="headerlink" href="#when-a-runbook-is-missing" title="Permanent link">⛓️</a></h3>
+<p>If an alert fires and the runbook link is broken or missing:</p>
+<ol>
+<li>Create a new runbook from the standard template</li>
+<li>Fill in what you know from investigating</li>
+<li>If you don't know the full resolution, flag it for the team to complete</li>
+<li>No alert should fire more than once without a runbook</li>
+</ol>
+<blockquote>
+<p><strong>Why this matters:</strong> When the on-call engineer gets paged at 3 AM, the runbook is the difference between a 5-minute resolution and a 45-minute investigation.</p>
+</blockquote>
+<hr />
+<h2 id="key-takeaways-best-practices">Key Takeaways / Best Practices<a class="headerlink" href="#key-takeaways-best-practices" title="Permanent link">⛓️</a></h2>
+<ol>
+<li><strong>Stick with the built-in monitoring stack</strong> — every additional component is something you have to maintain</li>
+<li><strong>Five severity levels, each with a defined escalation path</strong> — critical pages, high notifies both teams, medium is team-only, info is context</li>
+<li><strong>Two mandatory labels on every alert: <code>service</code> and <code>severity</code></strong> — without them, routing breaks</li>
+<li><strong>Every alert must have a runbook</strong> — if you can't write one, delete the alert</li>
+<li><strong>Use SLO-based burn-rate alerting</strong> — alert on error budget consumption, not raw thresholds</li>
+<li><strong>New alerts start at <code>info</code> and graduate up</strong> — info → medium → high → critical</li>
+<li><strong>Use a dead man's switch</strong> — Watchdog + Dead Man's Snitch catches monitoring failures in under a minute</li>
+<li><strong>Automate investigation for known patterns</strong> — the on-call should receive pre-investigated alerts</li>
+<li><strong>Use inhibition rules</strong> — critical suppresses medium to reduce noise during incidents</li>
+<li><strong>Review and prune alerts quarterly</strong> — they grow back if you don't maintain them</li>
+</ol>
+<p><strong>Up Next:</strong> Session 8 — How We Handle Incidents</p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+  <script>var tabs=__md_get("__tabs");if(Array.isArray(tabs))e:for(var set of document.querySelectorAll(".tabbed-set")){var labels=set.querySelector(".tabbed-labels");for(var tab of tabs)for(var label of labels.getElementsByTagName("label"))if(label.innerText.trim()===tab){var input=document.getElementById(label.htmlFor);input.checked=!0;continue e}}</script>
+
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      &copy; 2026 Red Hat, Inc. &mdash; SRE Hybrid Platforms &bull; Built with &#10084; by Rohit Bhilare
+    </div>
+  
+  
+</div>
+      
+        
+<div class="md-social">
+  
+    
+    
+    
+    
+    <a href="https://github.com/rbhilare/sre-functions" target="_blank" rel="noopener" title="GitHub Repository" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M173.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M252.8 8C114.1 8 8 113.3 8 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C436.2 457.8 504 362.9 504 252 504 113.3 391.5 8 252.8 8M105.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+    </a>
+  
+    
+    
+    
+    
+    <a href="https://www.redhat.com" target="_blank" rel="noopener" title="Red Hat" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M341.5 285.6c33.7 0 82.3-6.9 82.3-47 .2-6.7.9-1.8-20.9-96.2-4.6-19.1-8.7-27.8-42.3-44.6-26.1-13.3-82.9-35.4-99.7-35.4-15.7 0-20.2 20.2-38.9 20.2-18 0-31.3-15.1-48.1-15.1-16.1 0-26.7 11-34.8 33.6-27.5 77.6-26.3 74.3-26.1 78.3 0 24.8 97.6 106.1 228.5 106.1zm87.5-30.8c4.7 22 4.7 24.3 4.7 27.2 0 37.7-42.3 58.6-98 58.6C210 340.7 99.8 267 99.8 218.3c0-6.8 1.4-13.5 4.1-19.7C58.7 200.9.1 208.9.1 260.6c0 84.7 200.6 189 359.5 189 121.8 0 152.5-55.1 152.5-98.6 0-34.2-29.6-73-82.9-96.2z"/></svg>
+    </a>
+  
+    
+    
+    
+    
+    <a href="https://www.linkedin.com/in/rohit-bhilare/" target="_blank" rel="noopener" title="LinkedIn" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M416 32H31.9C14.3 32 0 46.5 0 64.3v383.4C0 465.5 14.3 480 31.9 480H416c17.6 0 32-14.5 32-32.3V64.3c0-17.8-14.4-32.3-32-32.3M135.4 416H69V202.2h66.5V416zM102.2 96a38.5 38.5 0 1 1 0 77 38.5 38.5 0 1 1 0-77m282.1 320h-66.4V312c0-24.8-.5-56.7-34.5-56.7-34.6 0-39.9 27-39.9 54.9V416h-66.4V202.2h63.7v29.2h.9c8.9-16.8 30.6-34.5 62.9-34.5 67.2 0 79.7 44.3 79.7 101.9z"/></svg>
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["navigation.tabs", "navigation.tabs.sticky", "navigation.sections", "navigation.expand", "navigation.top", "navigation.indexes", "navigation.instant", "navigation.tracking", "search.suggest", "search.highlight", "search.share", "content.tabs.link", "content.code.copy", "content.code.annotate", "toc.follow", "header.autohide", "announce.dismiss"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.d7400e89.min.js"></script>
+      
+    
+  </body>
+</html>
