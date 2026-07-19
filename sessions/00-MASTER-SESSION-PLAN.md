@@ -30,9 +30,9 @@
 | 4 | [How We Run SRE](04-HOW-WE-RUN-SRE.md) | 40 min | Content |
 | 5 | [How We Operate OCP Clusters](05-HOW-WE-OPERATE-OCP-CLUSTERS.md) | 40 min | Content |
 | 6 | [Inside SRE: Ask & Discuss Anything](06-INSIDE-SRE-ASK-AND-DISCUSS.md) | 30 min | Q&A |
-| 7 | How We Monitor and Alert | 30 min | Content |
-| 8 | How We Handle Incidents | 30 min | Content |
-| 9 | Inside SRE: Ask & Discuss Anything | 30 min | Q&A |
+| 7 | [How We Monitor and Alert](07-HOW-WE-MONITOR-AND-ALERT.md) | 30 min | Content |
+| 8 | [How We Handle Incidents](08-HOW-WE-HANDLE-INCIDENTS.md) | 30 min | Content |
+| 9 | [Inside SRE: Ask & Discuss Anything](09-INSIDE-SRE-ASK-AND-DISCUSS.md) | 30 min | Q&A |
 | 10 | How We Measure Reliability | 30 min | Content |
 | 11 | How We Manage Changes and Upgrades | 30 min | Content |
 | 12 | Inside SRE: Ask & Discuss Anything | 30 min | Q&A |
@@ -93,19 +93,19 @@ Open Q&A covering Sessions 4–5. Discussion prompts around SRE team structure, 
 
 ---
 
-### Session 7: How We Monitor and Alert (30 min)
+### Session 7: [How We Monitor and Alert](07-HOW-WE-MONITOR-AND-ALERT.md) (30 min)
 
-Monitoring stack (Prometheus, Alertmanager, Loki), alert philosophy ("alert on actionables"), routing by severity, dashboards, alert fatigue elimination (how we went from 500 to 80 alerts), and our top 10 alert rules.
-
----
-
-### Session 8: How We Handle Incidents (30 min)
-
-Severity classification, 6-phase incident workflow, ServiceNow and Teams integration, status board, escalation paths, and post-incident reviews (PIRs).
+Built-in monitoring stack (Prometheus, Alertmanager), our five-level severity model (critical, critical-FTS, high, medium, info), mandatory alert labels (`service` + `severity`), SLO-based multi-window multi-burn-rate alerting, alert routing via PagerDuty and Slack, Dead Man's Snitch (Watchdog), automated alert investigation, inhibition rules, alert graduation pipeline, runbook discipline (89% coverage across 2,700+ alerts), and how we reduced alert noise by ~80%.
 
 ---
 
-### Session 9: Inside SRE — Ask & Discuss Anything (30 min)
+### Session 8: [How We Handle Incidents](08-HOW-WE-HANDLE-INCIDENTS.md) (30 min)
+
+Alert vs. incident distinction, four-phase incident lifecycle (Identify → Create → Resolve → Post-Incident), Sev1/2/3 severity classification with timed check-ins (20/30/60 min), three core roles (Tech Lead, Incident Owner, Scribe), customer communication matrix by impact scope, structured handover process for Follow-the-Sun, escalation triggers, and blameless post-mortem reviews with corrective action tracking.
+
+---
+
+### Session 9: [Inside SRE — Ask & Discuss Anything](09-INSIDE-SRE-ASK-AND-DISCUSS.md) (30 min)
 
 Open Q&A covering Sessions 7–8. Discussion prompts around monitoring, alert fatigue, and incident management.
 

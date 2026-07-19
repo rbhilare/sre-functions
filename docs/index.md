@@ -84,7 +84,7 @@ Cluster access, lifecycle operations, node maintenance workflow, upgrade monitor
 
 ### How We Monitor & Alert
 
-Alert philosophy, routing, dashboards, and how we went from 500 to 80 alerts.
+Five-level severity model, SLO burn-rate alerting, PagerDuty + Slack routing, Dead Man's Snitch, and runbook discipline across 2,700+ alerts.
 </div>
 
 <div class="card" markdown>
@@ -92,7 +92,7 @@ Alert philosophy, routing, dashboards, and how we went from 500 to 80 alerts.
 
 ### How We Handle Incidents
 
-6-phase workflow, ServiceNow + Teams integration, escalation, and post-incident reviews.
+Four-phase incident lifecycle, three core roles, severity-driven check-ins, customer communication, handover, and blameless post-mortem reviews.
 </div>
 
 <div class="card" markdown>
@@ -141,9 +141,9 @@ Backup strategy, DR testing, capacity planning, and the SRE flywheel for continu
 | **4** | [How We Run SRE](sessions/04-HOW-WE-RUN-SRE.md) | 40 min | :material-presentation: Content |
 | **5** | [How We Operate OCP Clusters](sessions/05-HOW-WE-OPERATE-OCP-CLUSTERS.md) | 40 min | :material-presentation: Content |
 | **6** | [Inside SRE: Ask & Discuss Anything](sessions/06-INSIDE-SRE-ASK-AND-DISCUSS.md) | 30 min | :material-forum: Q&A |
-| **7** | How We Monitor and Alert | 30 min | :material-presentation: Content |
-| **8** | How We Handle Incidents | 30 min | :material-presentation: Content |
-| **9** | Inside SRE: Ask & Discuss Anything | 30 min | :material-forum: Q&A |
+| **7** | [How We Monitor and Alert](sessions/07-HOW-WE-MONITOR-AND-ALERT.md) | 30 min | :material-presentation: Content |
+| **8** | [How We Handle Incidents](sessions/08-HOW-WE-HANDLE-INCIDENTS.md) | 30 min | :material-presentation: Content |
+| **9** | [Inside SRE: Ask & Discuss Anything](sessions/09-INSIDE-SRE-ASK-AND-DISCUSS.md) | 30 min | :material-forum: Q&A |
 | **10** | How We Measure Reliability | 30 min | :material-presentation: Content |
 | **11** | How We Manage Changes and Upgrades | 30 min | :material-presentation: Content |
 | **12** | Inside SRE: Ask & Discuss Anything | 30 min | :material-forum: Q&A |

@@ -107,7 +107,10 @@ nav:
       - "Session 2: Follow-the-Sun Model": sessions/02-FOLLOW-THE-SUN-MODEL.md
       - "Session 4: How We Run SRE": sessions/04-HOW-WE-RUN-SRE.md
       - "Session 5: How We Operate OCP Clusters": sessions/05-HOW-WE-OPERATE-OCP-CLUSTERS.md
-      # Sessions 7-14 will be added progressively
+      - "Session 7: How We Monitor and Alert": sessions/07-HOW-WE-MONITOR-AND-ALERT.md
+      - "Session 8: How We Handle Incidents": sessions/08-HOW-WE-HANDLE-INCIDENTS.md
+      # Sessions 10-14 will be added progressively
   - "Q&A Sessions":
       - "Session 3: Ask & Discuss (Sessions 1\u20132)": sessions/03-INSIDE-SRE-ASK-AND-DISCUSS.md
       - "Session 6: Ask & Discuss (Sessions 4\u20135)": sessions/06-INSIDE-SRE-ASK-AND-DISCUSS.md
+      - "Session 9: Ask & Discuss (Sessions 7\u20138)": sessions/09-INSIDE-SRE-ASK-AND-DISCUSS.md
